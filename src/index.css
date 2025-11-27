@@ -1,68 +1,222 @@
+/* --------------------------------------------------------------------------
+   IMPORTS
+   -------------------------------------------------------------------------- */
+/* Bootstrap wajib untuk grid system, utilities, dan komponen */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+/* --------------------------------------------------------------------------
+   ROOT VARIABLES - warna & shadow utama (bisa dipakai seluruh project)
+   -------------------------------------------------------------------------- */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --primary-color: #003d82;      /* Warna utama brand */
+  --secondary-color: #00acc1;    /* Warna pendukung brand */
+  --accent-color: #ff9800;       /* Warna aksen (highlight) */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --text-dark: #2c3e50;          /* Warna teks utama */
+  --text-light: #6c757d;         /* Warna teks sekunder */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --bg-light: #f8f9fa;           /* Background netral */
+
+  /* Shadow utilities */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* Style global untuk body */
 body {
-  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  color: var(--text-dark);
+  scroll-behavior: smooth;
+  padding-top: 46px; /* memberi ruang untuk navbar fixed */
+}
+
+
+/* --------------------------------------------------------------------------
+   BUTTON STYLES - tombol utama & outline
+   -------------------------------------------------------------------------- */
+
+/* Tombol utama gradient */
+.btn-primary-custom {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Hover tombol utama */
+.btn-primary-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Tombol outline (border tapi transparan) */
+.btn-outline-custom {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+/* Hover tombol outline */
+.btn-outline-custom:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+
+/* --------------------------------------------------------------------------
+   CARD STYLES - untuk fitur/services card
+   -------------------------------------------------------------------------- */
+
+/* Card dasar */
+.card-custom {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+/* Hover efek card */
+.card-custom:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Icon container pada card */
+.card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 0.75rem;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Icon warna */
+.icon-primary {
+  background-color: rgba(0, 61, 130, 0.1);
+  color: var(--primary-color);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.icon-secondary {
+  background-color: rgba(0, 172, 193, 0.1);
+  color: var(--secondary-color);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.icon-accent {
+  background-color: rgba(255, 152, 0, 0.1);
+  color: var(--accent-color);
+}
+
+
+/* --------------------------------------------------------------------------
+   HERO SECTION - untuk bagian opening halaman
+   -------------------------------------------------------------------------- */
+
+/* Wrapper hero */
+.hero-section {
+  padding: 8rem 0 5rem;
+  background: linear-gradient(135deg, rgba(0, 61, 130, 0.05), rgba(0, 172, 193, 0.05));
+  position: relative;
+  overflow: hidden;
+}
+
+/* Judul besar */
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+/* Subjudul */
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   SECTION STYLES
+   -------------------------------------------------------------------------- */
+
+/* Padding section */
+.section-padding {
+  padding: 5rem 0;
+}
+
+/* Judul besar section */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Subjudul section */
+.section-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Background gradient */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+}
+
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
   }
-  a:hover {
-    color: #747bff;
+
+  .hero-subtitle {
+    font-size: 1.25rem;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .section-title {
+    font-size: 2rem;
   }
+
+  .hero-section {
+    padding: 6rem 0 3rem;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   UTILITY CLASSES - sering dipakai di banyak tempat
+   -------------------------------------------------------------------------- */
+
+/* Text dengan warna gradient */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shadow util */
+.shadow-custom {
+  box-shadow: var(--shadow-md);
 }
