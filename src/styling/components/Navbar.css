@@ -1,0 +1,52 @@
+/* import index.css untuk akses global variable */
+@import url(/src/index.css);
+
+/* --------------------------------------------------------------------------
+   NAVBAR MODERN - styling clean, minimal, elegant
+   -------------------------------------------------------------------------- */
+
+/* Wrapper utama navbar */
+.navbar-modern {
+  background: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 0.85rem 0;
+  transition: none;
+}
+
+/* Link dalam navbar */
+.navbar-modern .nav-link {
+  font-weight: 500;
+  color: var(--text-dark) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.4rem;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* Hover link */
+.navbar-modern .nav-link:hover {
+  background: rgba(0, 61, 130, 0.08);
+  color: var(--primary-color) !important;
+}
+
+/* Active link (halaman yang sedang dibuka) */
+.navbar-modern .nav-link.active {
+  color: var(--primary-color) !important;
+  background: rgba(0, 61, 130, 0.12);
+}
+
+/* Toggler mobile */
+.navbar-modern .navbar-toggler {
+  border: none;
+  padding: 0.4rem 0.7rem;
+  background: rgba(0, 61, 130, 0.08);
+  border-radius: 0.4rem;
+  transition: background 0.2s ease;
+}
+
+.navbar-modern .navbar-toggler:hover {
+  background: rgba(0, 61, 130, 0.18);
+}
+
+.navbar-modern .navbar-toggler:focus {
+  box-shadow: none;
+}
