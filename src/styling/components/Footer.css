@@ -1,0 +1,23 @@
+/* import index.css untuk akses global variable */
+@import url(/src/index.css);
+
+/* --------------------------------------------------------------------------
+   FOOTER
+   -------------------------------------------------------------------------- */
+
+.footer-custom {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 3rem 0 1.5rem;
+}
+
+.footer-custom a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-custom a:hover {
+  color: var(--secondary-color);
+}
+
