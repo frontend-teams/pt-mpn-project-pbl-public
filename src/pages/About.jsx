@@ -1,8 +1,8 @@
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { companyInfo } from "../data/company";
 import "../styling/pages/About.css";
 import "../index.css";
+import CTASection from "../components/CTASection";
 
 function About() {
   return (
@@ -162,8 +162,12 @@ function About() {
           </Row>
         </Container>
       </section>
+
+      {/* CTA Section */}
+      <CTASection />
     </div>
   );
 }
 
 export default About;
+
