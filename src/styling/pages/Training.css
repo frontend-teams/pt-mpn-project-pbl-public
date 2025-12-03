@@ -1,0 +1,92 @@
+@import url(/src/index.css);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Color Header */
+.title-section h1 {
+  color: var(--primary-color);
+}
+
+/* Entrance / page animations used by Training.jsx */
+
+/* Utility animation you can apply directly */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.50s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* State classes used by `Training.jsx` to animate the whole page */
+.training-slide-up-init {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.training-slide-up-enter {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.training-fade-init {
+  opacity: 0;
+}
+
+.training-fade-enter {
+  opacity: 1;
+  transition: opacity 420ms ease;
+}
+
+/* Card reveal rules for rows inside the page — apply to all training rows */
+.training-row .card {
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform 1000ms ease, opacity 420ms ease;
+}
+
+/* When the container has entered, reveal cards. Add small stagger using nth-child */
+.training-slide-up-enter .training-row .card,
+.training-fade-enter .training-row .card {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.training-row .card:nth-child(1) {
+  transition-delay: 150ms;
+}
+.training-row .card:nth-child(2) {
+  transition-delay: 150ms;
+}
+.training-row .card:nth-child(3) {
+  transition-delay: 150ms;
+}
+.training-row .card:nth-child(4) {
+  transition-delay: 150ms;
+}
+.training-row .card:nth-child(5) {
+  transition-delay: 150ms;
+}
+.training-row .card:nth-child(6) {
+  transition-delay: 150ms;
+}
+
+/* Make sure images inside cards don't jump layout during animation */
+.training-row .card .card-img-top {
+  will-change: transform, opacity;
+}

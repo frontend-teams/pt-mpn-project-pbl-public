@@ -17,7 +17,7 @@ function Home() {
               <div className="d-flex flex-column flex-sm-row gap-3">
                 <Button
                   as={Link}
-                  to="/about"
+                  to="/training"
                   size="lg"
                   className="btn-primary-custom"
                 >
@@ -25,7 +25,7 @@ function Home() {
                 </Button>
                 <Button
                   as={Link}
-                  to="/about"
+                  to="/contact"
                   size="lg"
                   className="btn-outline-custom"
                 >
