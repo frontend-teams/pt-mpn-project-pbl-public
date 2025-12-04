@@ -2,9 +2,17 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { companyInfo } from "../data/company";
 import { Link } from "react-router-dom";
 
+import Courses from "./Courses";
+import Services from "./Services";
+
+/* carousel */
+import Clients from "./Clients";
+import Gallery from "./Gallery";
+import Team from "./Team";
+
 function Home() {
   return (
-    <div>
+    <><div>
       {/* Hero Section */}
       <section className="hero-section">
         <Container>
@@ -27,7 +35,7 @@ function Home() {
                   as={Link}
                   to="/contact"
                   size="lg"
-                  className="btn-outline-custom"
+                  className="custom-button"
                 >
                   Hubungi Kami
                 </Button>
@@ -37,13 +45,18 @@ function Home() {
               <img
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070"
                 alt="Team Training"
-                className="img-fluid rounded shadow-custom"
-              />
+                className="img-fluid rounded shadow-custom" />
             </Col>
           </Row>
         </Container>
       </section>
-    </div>
+    </div><>
+        <Clients />
+        <Courses />
+        <Services />
+        <Gallery />
+        <Team />
+      </></>
   );
 }
 
