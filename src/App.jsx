@@ -9,6 +9,8 @@ import Contact from "./pages/Contact";
 
 import AllServices from "./pages/AllServices";
 import DetailServices from "./pages/DetailServices";
+import Training from "./pages/Training";
+import TrainingDetail from "./pages/TrainingDetail";
 
 function App() {
   return (
@@ -21,12 +23,12 @@ function App() {
           <Route path="/contact" element={<Contact />} />
 
           
-          <Route path="/services" element={<AllServices />} />
-          <Route path="/services/:id" element={<DetailServices />} />
+          <Route path="/services" element={<AllServices />} /> */}
+          {/* <Route path="/services/:id" element={<DetailServices />} /> */}
            {/* <Route path="/training" element={<Training />} />
           <Route path="/training/:id" element={<TrainingDetail />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="*" element={<NotFound />} /> */}
+          {/* <Route path="/team" element={<Team />} /> */}
+          {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
         <Footer />
       </BrowserRouter>
