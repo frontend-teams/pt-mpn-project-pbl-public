@@ -220,3 +220,82 @@ body {
 .shadow-custom {
   box-shadow: var(--shadow-md);
 }
+
+/* COURSES CARD */
+.courses-section {
+  margin-top: 40px;
+}
+
+/* Card styling */
+.course-card {
+  background: #0F2570;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: 0.25s;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 28px rgba(0,0,0,0.15);
+}
+
+.course-img {
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.course-content {
+  background-color: #0F2570;
+}
+
+/* Load more button */
+.more-btn {
+  background-color: #5075C7;
+  border: none;
+  transition: 0.3s;
+}
+
+.more-btn:hover {
+  background-color: #4568b3;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+}
+
+/* White Fade Overlay */
+.fade-edges-wrapper {
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* Force Swiper to move continuously */
+.swiper-free-mode > .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+/* BUTTONS */
+.custom-button {
+  background-color: #F58C02;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  transition: box-shadow 0.25s ease, transform 0.15s ease;
+}
+
+.custom-button:hover {
+  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.22);
+  transform: translateY(-2px);
+}
+
+.custom-button:active {
+  transform: scale(0.96);
+  box-shadow: none;
+}

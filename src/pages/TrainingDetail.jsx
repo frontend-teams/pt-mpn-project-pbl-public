@@ -45,7 +45,9 @@ const TrainingDetailModal = ({ show, onClose, onSubmit, data }) => {
         <Button variant="secondary" onClick={onClose}>
           Tutup
         </Button>
-        <Button variant="primary" onClick={onSubmit}>Daftar Pelatihan</Button>
+        <Button variant="primary" onClick={onSubmit}>
+          Daftar Pelatihan
+        </Button>
       </Modal.Footer>
     </Modal>
   );
