@@ -43,9 +43,10 @@ export const companyInfo = {
   },
   
   socialMedia: {
-    facebook: "#",
-    instagram: "#",
+    facebook: "https://www.facebook.com/profile.php?id=61581378853667&sk=about&locale=id_ID",
+    instagram: "https://www.instagram.com/ptmpn.official",
     linkedin: "#",
-    youtube: "#"
+    youtube: "https://www.youtube.com/@ptmpn_official",
+    tiktok: "https://www.tiktok.com/@ptmpn_official"
   }
 };

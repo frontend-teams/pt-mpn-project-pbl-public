@@ -1,0 +1,118 @@
+/* import index.css untuk akses global variable */
+@import url(/src/index.css);
+
+/* Animasi Fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Gaya untuk Section Title dengan garis aksen */
+.section-title {
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    width: 60px;
+    height: 4px;
+    background: var(--secondary-color);
+    display: block;
+    margin: 0.75rem auto 0;
+    border-radius: 2px;
+}
+
+/* Hero Section Enhancement */
+.hero-section {
+    background: linear-gradient(135deg, rgba(0, 61, 130, 0.06), rgba(0, 172, 193, 0.15));
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.hero-section h1 {
+    color: var(--primary-color);
+}
+
+/* Keunggulan & Legalitas Card Hover */
+.card-custom {
+    border-radius: 1rem;
+    background: white;
+}
+
+/* Map container rounding */
+.ratio iframe {
+    border-radius: 1rem;
+}
+
+/* Extra spacing for lists on mission & legalitas */
+.list-unstyled li span {
+    font-size: 0.95rem;
+}
+
+.card-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-icon i {
+    font-size: 1.4rem !important;
+}
+
+.icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .icon-primary {
+  background: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+}
+
+.icon-secondary {
+  background: rgba(108, 117, 125, 0.1);
+  color: var(--secondary-color);
+}
+
+.icon-success {
+  background: rgba(25, 135, 84, 0.1);
+  color: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+} */
+
+
+.bg-primary-soft {
+    background: rgba(13, 110, 253, 0.08);
+}
+
+.bg-secondary-soft {
+    background: rgba(108, 117, 125, 0.08);
+}
+
+.bg-success-soft {
+    background: rgba(25, 135, 84, 0.08);
+}
+
+.bg-warning-soft {
+    background: rgba(255, 193, 7, 0.15);
+}
+
+.bg-info-soft {
+    background: rgba(13, 202, 240, 0.15);
+}
+
+/* 
+.icon-primary { color: #0d6efd; }
+.icon-secondary { color: #6c757d; }
+.icon-success { color: #198754; }
+.icon-warning { color: #ffc107; }
+.icon-info { color: #0dcaf0; } */

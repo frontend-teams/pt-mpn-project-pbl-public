@@ -1,9 +1,10 @@
 // import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Home from "./pages/Home";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Training from "./pages/Training";
 import TrainingDetail from "./pages/TrainingDetail";
 
@@ -15,13 +16,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          {/* <Route path="/services" element={<Services />} /> */}
-          {/* <Route path="/services/:id" element={<ServiceDetail />} /> */}
+          {/* <Route path="/services" element={<Services />} />
+          <Route path="/services/:id" element={<ServiceDetail />} />
           <Route path="/training" element={<Training />} />
           <Route path="/training/:id" element={<TrainingDetail />} />
-          {/* <Route path="/team" element={<Team />} /> */}
-          {/* <Route path="/contact" element={<Contact />} /> */}
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="/team" element={<Team />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} /> */}
         </Routes>
         <Footer />
       </BrowserRouter>
