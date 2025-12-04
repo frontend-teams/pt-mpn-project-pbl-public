@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Services from "./pages/Services";
+import DetailServices from "./pages/DetailServices";
 
 function App() {
   return (
@@ -15,9 +17,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          {/* <Route path="/services" element={<Services />} />
-          <Route path="/services/:id" element={<ServiceDetail />} />
-          <Route path="/training" element={<Training />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/:id" element={<DetailServices />} />
+           {/* <Route path="/training" element={<Training />} />
           <Route path="/training/:id" element={<TrainingDetail />} />
           <Route path="/team" element={<Team />} />
           <Route path="*" element={<NotFound />} /> */}
