@@ -49,4 +49,5 @@ export const companyInfo = {
     youtube: "https://www.youtube.com/@ptmpn_official",
     tiktok: "https://www.tiktok.com/@ptmpn_official"
   }
+
 };
