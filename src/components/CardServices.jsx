@@ -1,5 +1,5 @@
 import React from "react";
-// import "../styling/pages/Services.css";
+import "../styling/pages/Services.css";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import "../index.css";
