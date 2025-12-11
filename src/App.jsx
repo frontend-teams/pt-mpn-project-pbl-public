@@ -7,7 +7,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Training from "./pages/Training";
 import TrainingDetail from "./pages/TrainingDetail";
-
+import OurTeam from "./pages/OurTeam";
+import Services from "./pages/Services";
 function App() {
   return (
     <>
@@ -17,12 +18,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          {/* <Route path="/services" element={<Services />} /> */}
-          {/* <Route path="/services/:id" element={<ServiceDetail />} /> */}
+          <Route path="/services" element={<Services />} />
           <Route path="/training" element={<Training />} />
           <Route path="/training/:id" element={<TrainingDetail />} />
-          {/* <Route path="/team" element={<Team />} /> */}
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="/team" element={<OurTeam />} />
         </Routes>
         <Footer />
       </BrowserRouter>
