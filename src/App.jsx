@@ -9,7 +9,8 @@ import AllServices from "./pages/AllServices";
 import DetailServices from "./pages/DetailServices";
 import Training from "./pages/Training";
 import TrainingDetail from "./pages/TrainingDetail";
-
+import OurTeam from "./pages/OurTeam";
+import Services from "./pages/Services";
 function App() {
   return (
     <>
@@ -25,6 +26,10 @@ function App() {
           <Route path="/training/:id" element={<TrainingDetail />} />
           {/* <Route path="/team" element={<Team />} />
           {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="/services" element={<Services />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/training/:id" element={<TrainingDetail />} />
+          <Route path="/team" element={<OurTeam />} />
         </Routes>
         <Footer />
       </BrowserRouter>

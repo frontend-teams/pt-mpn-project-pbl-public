@@ -47,12 +47,12 @@ const Training = () => {
           : "training-slide-up-init training-fade-init"
       }`}
     >
-      <header className="title-section">
+      <header className="title-section py-4 mb-3">
         <h1 className="display-4 fw-bold text-gradient pb-2 mt-4 text-center">
           Program Pelatihan
         </h1>
-        <p className="text-center mb-5 fw-light fs-5 text-muted">
-          Tingkatkan skill kamu melalui berbagai pelatihan terbaik kami.
+        <p className="text-center mb-5 fw-normal fs-5 text-muted">
+          Tingkatkan skill kamu melalui berbagai pelatihan terbaik kami
         </p>
       </header>
 
@@ -63,8 +63,13 @@ const Training = () => {
       <div className="row g-4 training-row">
         {trainings
           .filter((t) => t.category === "non-formal")
-          .map((item) => (
-            <TrainingCard key={item.id} item={item} onOpen={openModal} />
+          .map((item, idx) => (
+            <TrainingCard
+              key={item.id}
+              item={item}
+              onOpen={openModal}
+              index={idx}
+            />
           ))}
       </div>
 
@@ -75,8 +80,13 @@ const Training = () => {
       <div className="row g-4 training-row">
         {trainings
           .filter((t) => t.category === "keterampilan-kerja")
-          .map((item) => (
-            <TrainingCard key={item.id} item={item} onOpen={openModal} />
+          .map((item, idx) => (
+            <TrainingCard
+              key={item.id}
+              item={item}
+              onOpen={openModal}
+              index={idx}
+            />
           ))}
       </div>
 

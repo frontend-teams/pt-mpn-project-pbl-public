@@ -1,0 +1,72 @@
+@import url(/src/index.css);
+
+Styling Card Direktur Utama
+.team-card.is-director .team-card-image {
+  width: 150px; 
+  height: 150px;
+}
+
+.team-card.is-director .team-card-name {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.team-card.is-director .team-card-position {
+    font-weight: 500;
+}
+
+/* Styling untuk card anggota Tim */
+.team-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm); 
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.05); 
+}
+
+/* Card Hover */
+.team-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+/* KOMPONEN CARD */
+/* Styling untuk foto */
+.team-card-image {
+  width: 150px; 
+  height: 150px;
+  margin: 0 auto 16px;
+  overflow: hidden;
+}
+
+.team-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Nama Anggota Tim */
+.team-card-name {
+  font-size: 1.25rem; 
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--secondary-color); 
+}
+
+/* Posisi */
+.team-card-position {
+  font-size: 1rem;
+  color: #6c757d; 
+  margin-bottom: 12px;
+}
+
+/* Deskripsi */
+.team-card-description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
