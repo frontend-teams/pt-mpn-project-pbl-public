@@ -22,9 +22,10 @@ const Clients = () => {
   return (
     <section className="py-4">
       <div className="container text-center">
-        <h2 className="display-4 fw-bold text-gradient pb-5 mb-2">
+        <h2 className="display-4 fw-bold text-gradient pb-2 my-2">
           Mitra Kami
         </h2>
+        <p>Berikut adalah beberapa mitra terpercaya yang telah bekerja sama dengan kami</p>
         <div className="d-flex justify-content-center">
           <div
             className="fade-edges-wrapper"

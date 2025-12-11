@@ -1,10 +1,11 @@
 import React from "react";
 import icon1 from "../assets/icons/services_logo.png";
 const services = [
-  { icon: icon1, title: "Pelatihan & Development Karyawan" },
-  { icon: icon1, title: "Pengembangan SDM & Manajemen" },
+  { icon: icon1, title: "Pelatihan & Pendidikan Nonformal" },
+  { icon: icon1, title: "Pengembangan SDM & Konsultansi Manajemen" },
   { icon: icon1, title: "Pelatihan Keterampilan Kerja" },
-  { icon: icon1, title: "Perencanaan Event & Pelatihan" },
+  { icon: icon1, title: "Jasa Sertifikasi" },
+  { icon: icon1, title: "Penyediaan SDM (Manpower Supply)" },
 ];
 const Services = () => {
   return (
@@ -16,18 +17,21 @@ const Services = () => {
       }}
     >
       <div className="container text-center">
-        <h2 className="fw-bold mb-2">Our services</h2>
+        <h2 className="display-4 fw-bold text-gradient pb-1 mb-2 text-center">
+          Pelayanan Kami
+        </h2>
         <p className="text-light mb-5" style={{ opacity: 0.8 }}>
           Pelatihan & Pengembangan SDM untuk Perusahaan
         </p>
-        <div className="row justify-content-center g-4">
+        <div className="row justify-content-center g-3 g-md-4">
           {services.map((service, i) => (
-            <div className="col-6 col-md-3" key={i}>
+            <div className="col-6 col-sm-4 col-md-3 col-lg-2" key={i}>
               <div
                 className="p-4 rounded-4 d-flex flex-column align-items-center justify-content-center gap-3"
                 style={{
-                  width: "300px",
-                  height: "330px",
+                  width: "100%",
+                  maxWidth: "200px",
+                  minHeight: "220px",
                   background: "rgba(255,255,255,0.1)",
                   backdropFilter: "blur(5px)",
                   transition: "all 0.3s ease",

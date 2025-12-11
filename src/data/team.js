@@ -2,7 +2,7 @@ export const teamData = [
   {
     "name": "Doddy Dewayadi, SE, MM",
     "position": "Direktur Utama",
-    "image": "https://i.pinimg.com/736x/d9/b6/1a/d9b61a74e0ca7c64d50d27bb42013b4b.jpg",
+    "image": "/src/assets/team/direktur-utama.jpeg",
     "description": " "
   },
   {

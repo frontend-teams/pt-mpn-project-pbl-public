@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { companyInfo } from "../data/company";
-import logo from "../assets/logo-mpn.svg";
 import "../index.css"
 import "../styling/components/Footer.css"
 
