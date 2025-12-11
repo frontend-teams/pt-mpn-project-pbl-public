@@ -19,6 +19,7 @@ function About() {
             </p>
           </div>
         </Container>
+        
       </section>
 
       {/* Company Profile */}

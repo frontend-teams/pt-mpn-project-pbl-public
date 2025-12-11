@@ -1,0 +1,367 @@
+@import url(/src/index.css);
+
+/* =========================================================
+   STYLE UNTUK HALAMAN LIST LAYANAN
+   ========================================================= */
+.Layanan {
+    margin: 160px 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Layanan p {
+    padding-bottom: 20px;
+    font-size: 13px;
+    color: rgb(50, 50, 50);
+}
+
+.Layanan h1 {
+    font-family: "Open Sans", sans-serif;
+    padding-bottom: 10px;
+}
+
+.Layanan hr {
+    width: 10%;
+}
+
+.info-pro {
+    padding-top: 20px;
+}
+
+.info-pro p {
+    padding-bottom: 10px;
+}
+
+.Layanans-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 100%;
+    margin: auto;
+}
+
+.Layanan-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+     display: flex;
+    flex-direction: column;
+}
+
+.Layanan-card:hover {
+    transform: translateY(-6px);
+}
+
+.Layanan-card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.Layanan-card h3 {
+    color: #1e40af;
+    margin-bottom: 8px;
+}
+
+.Layanan-card p {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.skills {
+    margin-bottom: 15px;
+}
+
+.skills span {
+    display: inline-block;
+    background: #e0e7ff;
+    color: #1e3a8a;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin: 3px;
+    transition: background 0.3s;
+}
+
+.skills span:hover {
+    background: #c7d2fe;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.btn-services {
+    background: #1e40af;
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 1.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    margin-top: auto; 
+}
+
+.btn:hover {
+    background: #2563eb;
+}
+
+/* =======================
+   RESPONSIVE TABLET
+   ======================= */
+@media (max-width: 992px) {
+    .Layanan {
+        margin: 120px 100px;
+    }
+
+    .Layanans-container {
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* =======================
+   RESPONSIVE PHONE
+   ======================= */
+@media (max-width: 576px) {
+    .Layanan {
+        margin: 80px auto;
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    .Layanans-container {
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 15px;
+    }
+
+    .Layanan-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .Layanan-card h3 {
+        font-size: 1rem;
+    }
+
+    .Layanan-card p {
+        font-size: 0.8rem;
+    }
+
+    .skills a {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+    }
+
+    .btn {
+        font-size: 0.8rem;
+        padding: 7px 12px;
+    }
+}
+
+/* =========================================================
+   STYLE UNTUK HALAMAN DETAIL LAYANAN (ACCORDION)
+   ========================================================= */
+.detail-container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 150px auto 50px auto;
+    /* jarak seperti halaman layanan */
+    padding: 0 20px;
+}
+
+
+.services-container {
+    display: grid;
+    gap: 25px;
+    margin: auto;
+}
+
+.services-container h1 {
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 10px;
+}
+
+.accordion {
+    width: 100%;
+    max-width: 1200px;
+    border: 1px solid #3b1717;
+    border-radius: 10px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.accordion-header {
+    background: #f5f5f5;
+    padding: 18px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-header h3 {
+    margin: 0;
+}
+
+.accordion-content {
+    padding: 20px;
+    background: white;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.service-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background: white;
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h4 {
+    margin-top: 0;
+    color: #0d6efd;
+}
+
+/* import index.css untuk akses global variable */
+@import url(/src/index.css);
+
+/* Animasi Fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Gaya untuk Section Title dengan garis aksen */
+.section-title {
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    width: 60px;
+    height: 4px;
+    background: var(--secondary-color);
+    display: block;
+    margin: 0.75rem auto 0;
+    border-radius: 2px;
+}
+
+/* Hero Section Enhancement */
+.hero-section {
+    background: linear-gradient(135deg, rgba(0, 61, 130, 0.06), rgba(0, 172, 193, 0.15));
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.hero-section h1 {
+    color: var(--primary-color);
+}
+
+/* Keunggulan & Legalitas Card Hover */
+.card-custom {
+    border-radius: 1rem;
+    background: white;
+}
+
+/* Map container rounding */
+.ratio iframe {
+    border-radius: 1rem;
+}
+
+/* Extra spacing for lists on mission & legalitas */
+.list-unstyled li span {
+    font-size: 0.95rem;
+}
+
+.card-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-icon i {
+    font-size: 1.4rem !important;
+}
+
+.icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .icon-primary {
+  background: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+}
+
+.icon-secondary {
+  background: rgba(108, 117, 125, 0.1);
+  color: var(--secondary-color);
+}
+
+.icon-success {
+  background: rgba(25, 135, 84, 0.1);
+  color: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+} */
+
+
+.bg-primary-soft {
+    background: rgba(13, 110, 253, 0.08);
+}
+
+.bg-secondary-soft {
+    background: rgba(108, 117, 125, 0.08);
+}
+
+.bg-success-soft {
+    background: rgba(25, 135, 84, 0.08);
+}
+
+.bg-warning-soft {
+    background: rgba(255, 193, 7, 0.15);
+}
+
+.bg-info-soft {
+    background: rgba(13, 202, 240, 0.15);
+}
+
+/* 
+.icon-primary { color: #0d6efd; }
+.icon-secondary { color: #6c757d; }
+.icon-success { color: #198754; }
+.icon-warning { color: #ffc107; }
+.icon-info { color: #0dcaf0; } */
