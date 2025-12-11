@@ -5,7 +5,6 @@ import "../index.css";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useState } from "react";
-import { Modal } from "bootstrap";
 
 function Contact() {
     const [nama, setNama] = useState("");
@@ -92,23 +91,23 @@ function Contact() {
                                     <ul className="list-unstyled mb-0">
                                         <li className="d-flex align-items-center justify-content-center mb-3">
                                             <i className="bi bi-telephone me-2 mt-1 fs-5 text-gradient"></i>
-                                            <a href={`tel:${companyInfo.contact.phone}`}>0821-1472-6830</a>
+                                            <a href={`tel:${companyInfo.kontak.phone}`}>0821-1472-6830</a>
                                         </li>
                                         <li className="d-flex align-items-center justify-content-center mb-3">
                                             <i className="bi bi-instagram me-2 mt-1 fs-5 text-gradient"></i>
-                                            <a href={companyInfo.socialMedia.instagram}>ptmpn.official</a>
+                                            <a href={companyInfo.sosial_media.instagram}>ptmpn.official</a>
                                         </li>
                                         <li className="d-flex align-items-center justify-content-center mb-3">
                                             <i className="bi bi-youtube me-2 mt-1 fs-5 text-gradient"></i>
-                                            <a href={companyInfo.socialMedia.youtube}>Mitra Pelatihan Nasional</a>
+                                            <a href={companyInfo.sosial_media.youtube}>Mitra Pelatihan Nasional</a>
                                         </li>
                                         <li className="d-flex align-items-center justify-content-center mb-3">
                                             <i className="bi bi-facebook me-2 mt-1 fs-5 text-gradient"></i>
-                                            <a href={companyInfo.socialMedia.facebook}>PT Multiartha Pundimas Nawasena</a>
+                                            <a href={companyInfo.sosial_media.facebook}>PT Multiartha Pundimas Nawasena</a>
                                         </li>
                                         <li className="d-flex align-items-center justify-content-center mb-3">
                                             <i className="bi bi-envelope-fill me-2 mt-1 fs-5 text-gradient"></i>
-                                            <a href={`mailto:${companyInfo.contact.email}`}>{companyInfo.contact.email}</a>
+                                            <a href={`mailto:${companyInfo.kontak.email}`}>{companyInfo.contact.email}</a>
                                         </li>
                                     </ul>
                                 </Card.Body>
