@@ -3,6 +3,8 @@ import trainings from "../data/training";
 import TrainingCard from "../components/TrainingCard";
 import TrainingDetail from "./TrainingDetail";
 import "../styling/pages/Training.css";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import "../index.css";
 
 const Training = () => {
   const [selectedTraining, setSelectedTraining] = useState(null);
@@ -41,61 +43,78 @@ const Training = () => {
 
   return (
     <div
-      className={`container py-5 ${
-        mounted
-          ? "training-slide-up-enter training-fade-enter"
-          : "training-slide-up-init training-fade-init"
-      }`}
+      className={`${mounted
+        ? "training-slide-up-enter training-fade-enter"
+        : "training-slide-up-init training-fade-init"
+        }`}
     >
-      <header className="title-section py-4 mb-3">
-        <h1 className="display-4 fw-bold text-gradient pb-2 mt-4 text-center">
-          Program Pelatihan
-        </h1>
-        <p className="text-center mb-5 fw-normal fs-5 text-muted">
-          Tingkatkan skill kamu melalui berbagai pelatihan terbaik kami
-        </p>
-      </header>
+      <section className="hero-section">
+        <Container>
+          <header className="title-section py-4 mb-3 fade-in">
+            <h1 className="display-4 fw-bold text-gradient pb-1 mb-2 text-center">
+              Program Pelatihan
+            </h1>
+            <p className="fs-5 text-muted text-center">
+              Tingkatkan skill kamu melalui berbagai pelatihan terbaik kami
+            </p>
+          </header>
+        </Container>
+      </section>
 
-      <div className="mb-4">
-        <h2 className="fw-bold fs-3">Pelatihan dan Pendidikan Non Formal</h2>
-      </div>
+      <section className="section-padding bg-light">
+        <div className="mb-4">
+          <h2 className="section-title">Pelatihan dan Pendidikan Non Formal</h2>
+        </div>
+        <Container>
+          <Row className="g-4">
+            <Col lg={12} className="fade-in">
+              <div className="row g-4 training-row">
+                {trainings
+                  .filter((t) => t.category === "non-formal")
+                  .map((item, idx) => (
+                    <TrainingCard
+                      key={item.id}
+                      item={item}
+                      onOpen={openModal}
+                      index={idx}
+                    />
+                  ))}
+              </div>
+            </Col>
+          </Row>
+        </Container>
 
-      <div className="row g-4 training-row">
-        {trainings
-          .filter((t) => t.category === "non-formal")
-          .map((item, idx) => (
-            <TrainingCard
-              key={item.id}
-              item={item}
-              onOpen={openModal}
-              index={idx}
-            />
-          ))}
-      </div>
+        <div className="mt-5 mb-4 pt-5">
+          <h2 className="section-title">Pelatihan Keterampilan Kerja</h2>
+        </div>
 
-      <div className="mt-5 mb-4 pt-5">
-        <h2 className="fw-bold fs-3">Pelatihan Keterampilan Kerja</h2>
-      </div>
+        <Container>
+          <Row className="g-4">
+            <Col lg={12} className="fade-in">
+              <div className="row g-4 training-row">
+                {trainings
+                  .filter((t) => t.category === "keterampilan-kerja")
+                  .map((item, idx) => (
+                    <TrainingCard
+                      key={item.id}
+                      item={item}
+                      onOpen={openModal}
+                      index={idx}
+                    />
+                  ))}
+              </div>
+            </Col>
+          </Row>
+        </Container>
 
-      <div className="row g-4 training-row">
-        {trainings
-          .filter((t) => t.category === "keterampilan-kerja")
-          .map((item, idx) => (
-            <TrainingCard
-              key={item.id}
-              item={item}
-              onOpen={openModal}
-              index={idx}
-            />
-          ))}
-      </div>
-
-      <TrainingDetail
-        show={show}
-        onClose={closeModal}
-        data={selectedTraining}
-      />
+        <TrainingDetail
+          show={show}
+          onClose={closeModal}
+          data={selectedTraining}
+        />
+      </section >
     </div>
+
   );
 };
 
