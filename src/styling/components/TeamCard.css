@@ -12,7 +12,7 @@ Styling Card Direktur Utama
 }
 
 .team-card.is-director .team-card-position {
-    font-weight: 600;
+    font-weight: 500;
 }
 
 /* Styling untuk card anggota Tim */
@@ -53,7 +53,7 @@ Styling Card Direktur Utama
   font-size: 1.25rem; 
   font-weight: 700;
   margin-bottom: 4px;
-  color: var(--primary-color); 
+  color: var(--secondary-color); 
 }
 
 /* Posisi */

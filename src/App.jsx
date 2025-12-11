@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Training from "./pages/Training";
 import TrainingDetail from "./pages/TrainingDetail";
 import About from "./pages/OurTeam";
+import OurTeam from "./pages/OurTeam";
 function App() {
   return (
     <>

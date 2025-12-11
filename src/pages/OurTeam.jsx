@@ -1,6 +1,6 @@
 import React from "react";
 import TeamCard from "../components/TeamCard";
-import{ teamData } from "../data/TeamData";
+import{ teamData } from "../data/team";
 import "../styling/pages/OurTeam.css";
 
 // Pages Tim Kami

@@ -1,4 +1,4 @@
-export const teamData = [
+export const team = [
   {
     "name": "Doddy Dewayadi, SE, MM",
     "position": "Direktur Utama",
