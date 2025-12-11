@@ -11,14 +11,14 @@ function Contact() {
     const [nama, setNama] = useState("");
     const [email, setEmail] = useState("");
     const [layanan, setLayanan] = useState("");
-    const [isi, setAlamat] = useState("");
+    const [isi, setIsi] = useState("");
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post("", {
-                nama_pesan: nama,
+            .post("http://202.10.47.174:8000/api/pesan/add/", {
+                name_pesan: nama,
                 email_pesan: email,
                 layanan_pesan: layanan,
                 pesan_isi: isi
@@ -27,7 +27,7 @@ function Contact() {
                 setNama("");
                 setEmail("");
                 setLayanan("");
-                setIsi("")
+                setIsi("");
                 console.log(response);
             })
             .catch(error => {
