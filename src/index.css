@@ -2,21 +2,20 @@
    IMPORTS
    -------------------------------------------------------------------------- */
 /* Bootstrap wajib untuk grid system, utilities, dan komponen */
-@import 'bootstrap/dist/css/bootstrap.min.css';
-
+@import "bootstrap/dist/css/bootstrap.min.css";
 
 /* --------------------------------------------------------------------------
    ROOT VARIABLES - warna & shadow utama (bisa dipakai seluruh project)
    -------------------------------------------------------------------------- */
 :root {
-  --primary-color: #003d82;      /* Warna utama brand */
-  --secondary-color: #00acc1;    /* Warna pendukung brand */
-  --accent-color: #ff9800;       /* Warna aksen (highlight) */
+  --primary-color: #003d82; /* Warna utama brand */
+  --secondary-color: #00acc1; /* Warna pendukung brand */
+  --accent-color: #ff9800; /* Warna aksen (highlight) */
 
-  --text-dark: #2c3e50;          /* Warna teks utama */
-  --text-light: #6c757d;         /* Warna teks sekunder */
+  --text-dark: #2c3e50; /* Warna teks utama */
+  --text-light: #6c757d; /* Warna teks sekunder */
 
-  --bg-light: #f8f9fa;           /* Background netral */
+  --bg-light: #f8f9fa; /* Background netral */
 
   /* Shadow utilities */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -26,12 +25,12 @@
 
 /* Style global untuk body */
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
   color: var(--text-dark);
   scroll-behavior: smooth;
   padding-top: 46px; /* memberi ruang untuk navbar fixed */
 }
-
 
 /* --------------------------------------------------------------------------
    BUTTON STYLES - tombol utama & outline
@@ -39,7 +38,11 @@ body {
 
 /* Tombol utama gradient */
 .btn-primary-custom {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   border: none;
   color: white;
   padding: 0.75rem 1.5rem;
@@ -70,7 +73,6 @@ body {
   background: var(--primary-color);
   color: white;
 }
-
 
 /* --------------------------------------------------------------------------
    CARD STYLES - untuk fitur/services card
@@ -117,7 +119,6 @@ body {
   color: var(--accent-color);
 }
 
-
 /* --------------------------------------------------------------------------
    HERO SECTION - untuk bagian opening halaman
    -------------------------------------------------------------------------- */
@@ -125,7 +126,11 @@ body {
 /* Wrapper hero */
 .hero-section {
   padding: 8rem 0 5rem;
-  background: linear-gradient(135deg, rgba(0, 61, 130, 0.05), rgba(0, 172, 193, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(0, 61, 130, 0.05),
+    rgba(0, 172, 193, 0.05)
+  );
   position: relative;
   overflow: hidden;
 }
@@ -144,7 +149,6 @@ body {
   color: var(--text-light);
   margin-bottom: 2rem;
 }
-
 
 /* --------------------------------------------------------------------------
    SECTION STYLES
@@ -176,10 +180,13 @@ body {
 
 /* Background gradient */
 .bg-gradient-primary {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   color: white;
 }
-
 
 /* --------------------------------------------------------------------------
    RESPONSIVE BREAKPOINTS
@@ -203,14 +210,17 @@ body {
   }
 }
 
-
 /* --------------------------------------------------------------------------
    UTILITY CLASSES - sering dipakai di banyak tempat
    -------------------------------------------------------------------------- */
 
 /* Text dengan warna gradient */
 .text-gradient {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -228,15 +238,19 @@ body {
 
 /* Card styling */
 .course-card {
-  background: #0F2570;
+  background: #0f2570;
   border-radius: 14px;
   overflow: hidden;
   transition: 0.25s;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  -ms-border-radius: 14px;
+  -o-border-radius: 14px;
 }
 
 .course-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 12px 28px rgba(0,0,0,0.15);
+  box-shadow: 0px 12px 28px rgba(0, 0, 0, 0.15);
 }
 
 .course-img {
@@ -246,26 +260,47 @@ body {
 }
 
 .course-content {
-  background-color: #0F2570;
+  background-color: #ffffff;
+}
+
+.course-content p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
 }
 
 /* Load more button */
 .more-btn {
-  background-color: #5075C7;
+  background-color: #5075c7;
   border: none;
   transition: 0.3s;
 }
 
 .more-btn:hover {
   background-color: #4568b3;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* White Fade Overlay */
 .fade-edges-wrapper {
   position: relative;
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
 }
 
 /* Force Swiper to move continuously */
@@ -279,7 +314,7 @@ body {
 
 /* BUTTONS */
 .custom-button {
-  background-color: #F58C02;
+  background-color: #f58c02;
   color: white;
   padding: 12px 24px;
   border: none;

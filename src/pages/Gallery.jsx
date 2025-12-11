@@ -3,11 +3,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 
-import image1 from "../assets/gallery/image1.jpg";
-import image2 from "../assets/gallery/image2.jpg";
-import image3 from "../assets/gallery/image3.jpg";
-import image4 from "../assets/gallery/image4.jpg";
-import image5 from "../assets/gallery/image5.jpg";
+import image1 from "../assets/gallery/image1.jpeg";
+import image2 from "../assets/gallery/image2.jpeg";
+import image3 from "../assets/gallery/image3.jpeg";
+import image4 from "../assets/gallery/image4.jpeg";
+import image5 from "../assets/gallery/image5.jpeg";
 
 const photos = [
   image1,

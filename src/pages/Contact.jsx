@@ -8,34 +8,32 @@ import { useState } from "react";
 import { Modal } from "bootstrap";
 
 function Contact() {
+    const [nama, setNama] = useState("");
+    const [email, setEmail] = useState("");
+    const [layanan, setLayanan] = useState("");
+    const [isi, setAlamat] = useState("");
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
             .post("", {
-                nama_siswa: nama,
-                email_siswa: email,
-                alamat_siswa: alamat
+                nama_pesan: nama,
+                email_pesan: email,
+                layanan_pesan: layanan,
+                pesan_isi: isi
             })
             .then(response => {
                 setNama("");
                 setEmail("");
-                setAlamat("");
+                setLayanan("");
+                setIsi("")
                 console.log(response);
             })
             .catch(error => {
                 alert("Gagal terkirim:", error);
                 // console.error("Gagal menyimpan data:", error);
             })
-            .finally(() => {
-                const modalEl = document.getElementById("exampleModal");
-                const modalInstance = Modal.getOrCreateInstance(modalEl);
-                modalInstance.hide();
-                document.body.classList.remove('modal-open');
-                const backdrop = document.querySelectorAll('.modal-backdrop');
-                backdrop.forEach(bd => bd.remove());
-            })
-
     };
 
     return (
@@ -128,22 +126,22 @@ function Contact() {
                                         >
                                             <div className="mb-3">
                                                 <label className="form-label text-gradient">Masukkan nama lengkap anda.</label>
-                                                <input type="text" className="form-control" placeholder="Jane Smith" />
+                                                <input type="text" className="form-control" placeholder="Jane Smith" value={nama} onChange={(e) => setNama(e.target.value)} />
                                             </div>
 
                                             <div className="mb-3">
                                                 <label className="form-label text-gradient">Masukkan email yang valid untuk mendapatkan respons.</label>
-                                                <input type="email" className="form-control" placeholder="janesmith@gmail.com" />
+                                                <input type="email" className="form-control" placeholder="janesmith@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                                             </div>
 
                                             <div className="mb-3">
                                                 <label className="form-label text-gradient">Layanan apa yang Anda minati??</label>
-                                                <input type="text" className="form-control" placeholder="Konsultasi Bisnis" />
+                                                <input type="text" className="form-control" placeholder="Konsultasi Bisnis" value={layanan} onChange={(e) => setLayanan(e.target.value)} />
                                             </div>
 
                                             <div className="mb-4">
                                                 <label className="form-label text-gradient">Jelaskan detail atau persyaratan spesifik apa pun.</label>
-                                                <textarea className="form-control " rows="4" placeholder="Pesan Anda..." style={{ height: "340px" }}></textarea>
+                                                <textarea className="form-control " rows="4" placeholder="Pesan Anda..." value={isi} onChange={(e) => setIsi(e.target.value)} style={{ height: "340px" }}></textarea>
                                             </div>
 
                                             <motion.button
