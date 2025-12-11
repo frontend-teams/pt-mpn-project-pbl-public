@@ -7,51 +7,51 @@ import img3 from "../assets/courses/lead_generation.jpg";
 
 const courses = [
   {
-    title: "Digital Marketing",
+    title: "Pelatihan Soft Skill",
     days: "2 Hari",
     type: "Online",
     description:
-      "Maximize online visibility with paid ads, social media, and strategic SEO to drive targeted traffic and higher conversions.",
+      "Pelatihan Soft Skill dirancang untuk meningkatkan kemampuan non-teknis yang sangat dibutuhkan dalam dunia kerja modern.",
     image: img1,
   },
   {
-    title: "Business Consulting",
+    title: "Pelatihan Administrasi Perkantoran",
     days: "2 Hari",
     type: "Online",
     description:
-      "Enhance business strategy, optimize core processes, and leverage real-time analytics for sustainable growth.",
+      "Pelatihan ini memberikan keterampilan praktis yang dibutuhkan staf administrasi dan perkantoran agar dapat bekerja secara efisien dan profesional.",
     image: img2,
   },
   {
-    title: "Lead Generation",
+    title: "Pelatihan Kewirausahaan & UMKM",
     days: "4 Hari",
     type: "Online",
     description:
-      "Optimize advanced funnels, automate processes, and boost customer conversions to generate leads.",
+      "Pelatihan Kewirausahaan & UMKM ditujukan untuk membekali peserta dengan kemampuan merencanakan, mengelola, dan mengembangkan usaha secara berkelanjutan.",
     image: img3,
   },
   {
-    title: "SEO",
+    title: "Pelatihan Digital",
     days: "1 Hari",
     type: "Online",
     description:
-      "Optimize advanced funnels, automate processes, and boost customer conversions to generate leads.",
+      "Pelatihan Digital berfokus pada peningkatan kompetensi teknologi peserta agar mampu beradaptasi dengan kebutuhan dunia kerja yang serba digital.",
     image: img1,
   },
   {
-    title: "Optimasi SEO",
+    title: "Pelatihan Operator Alat Berat",
     days: "2 Hari",
     type: "Online",
     description:
-      "Optimize advanced funnels, automate processes, and boost customer conversions to generate leads.",
+      "Pelatihan Operator Alat Berat dirancang untuk membekali peserta dengan keterampilan teknis dan pengetahuan keselamatan dalam mengoperasikan berbagai jenis alat berat.",
     image: img2,
   },
   {
-    title: "Lead Generation",
+    title: "Pelatihan Welding (SMAW, MIG, TIG)",
     days: "2 Hari",
     type: "Online",
     description:
-      "Optimize advanced funnels, automate processes, and boost customer conversions to generate leads.",
+      "Pelatihan ini memberikan keterampilan praktis pengelasan untuk berbagai metode seperti SMAW, MIG, dan TIG.",
     image: img3,
   },
 ];
@@ -61,7 +61,7 @@ const Courses = () => {
     <section className="courses-section py-5">
       <div className="container text-center">
 
-        <h2 className="fw-bold">Pelatihan</h2>
+        <h2 className="display-4 fw-bold text-gradient pb-1 mb-2 text-center">Pelatihan</h2>
         <p className="text-muted mb-4">
           Comprehensive solutions for business success.
         </p>
@@ -77,7 +77,7 @@ const Courses = () => {
                   alt={course.title}
                 />
 
-                <div className="course-content p-3 text-white">
+                <div className="course-content p-3 text-black">
                   <h5 className="fw-semibold">{course.title}</h5>
 
                   <div className="d-flex gap-3 align-items-center small mt-2">
@@ -85,13 +85,10 @@ const Courses = () => {
                     <span><FaLaptop className="me-1" /> {course.type}</span>
                   </div>
 
-                  <p className="mt-2 small text-light opacity-75">
+                  <p className="mt-2 small text-dark opacity-75">
                     {course.description}
                   </p>
 
-                  <button className="btn btn-outline-light btn-sm w-100 rounded-3 mt-2 fw-semibold">
-                    Lihat Pelatihan
-                  </button>
                 </div>
               </div>
             </div>

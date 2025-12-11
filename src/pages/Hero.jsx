@@ -25,7 +25,7 @@ const Hero = () => {
                   style={{ width: "18px", height: "18px" }}
                 />
                 Konsultasi Gratis
-              </button>
+              </button>í
             </div>
           </div>
 
