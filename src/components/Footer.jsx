@@ -40,32 +40,16 @@ const Footer = () => {
             <h2>PT. MPN</h2>
             <p className="text-white-50 mb-4">{companyInfo.tagline}</p>
             <div className="d-flex gap-3">
-              <a
-                href={companyInfo.sosial_media.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={companyInfo.sosial_media.facebook} target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-facebook fs-5"></i>
               </a>
-              <a
-                href={companyInfo.sosial_media.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={companyInfo.sosial_media.instagram} target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-instagram fs-5"></i>
               </a>
-              <a
-                href={companyInfo.sosial_media.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={companyInfo.sosial_media.linkedin} target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-linkedin fs-5"></i>
               </a>
-              <a
-                href={companyInfo.sosial_media.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={companyInfo.sosial_media.youtube} target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-youtube fs-5"></i>
               </a>
             </div>
@@ -112,9 +96,7 @@ const Footer = () => {
               </li>
               <li className="mb-3 d-flex align-items-center">
                 <i className="bi bi-telephone-fill me-2"></i>
-                <a href={`tel:${companyInfo.kontak.phone}`}>
-                  {companyInfo.kontak.phone}
-                </a>
+                <a href={`tel:${companyInfo.kontak.phone}`}>{companyInfo.kontak.phone}</a>
               </li>
               <li className="mb-3 d-flex align-items-center">
                 <i className="bi bi-envelope-fill me-2"></i>
