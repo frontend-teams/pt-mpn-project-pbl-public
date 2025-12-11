@@ -10,6 +10,7 @@
   background: #ffffff !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   padding: 0.85rem 0;
+  z-index: 1030;
   transition: none;
 }
 
@@ -41,6 +42,11 @@
   background: rgba(0, 61, 130, 0.08);
   border-radius: 0.4rem;
   transition: background 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
 .navbar-modern .navbar-toggler:hover {
@@ -49,4 +55,110 @@
 
 .navbar-modern .navbar-toggler:focus {
   box-shadow: none;
+  outline: none;
+}
+
+.navbar-modern .navbar-toggler-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 61, 130, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+/* Navbar collapse */
+.navbar-modern .navbar-collapse {
+  z-index: 999;
+  background: #ffffff;
+  width: 100%;
+  max-height: calc(100vh - 80px);
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+.navbar-modern .navbar-collapse.show {
+  display: block !important;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE NAVBAR
+   -------------------------------------------------------------------------- */
+
+/* Mobile (max-width: 992px) */
+@media (max-width: 992px) {
+  .navbar-modern {
+    padding: 0.75rem 0;
+  }
+
+  .navbar-modern .navbar-brand img {
+    height: 50px !important;
+  }
+
+  .navbar-modern .nav-link {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.95rem;
+  }
+
+  .navbar-modern .btn-primary-custom {
+    width: 100%;
+    margin-top: 10px !important;
+    margin-left: 0 !important;
+  }
+
+  .navbar-collapse {
+    padding: 1rem 0;
+  }
+}
+
+/* Small mobile (max-width: 576px) */
+@media (max-width: 576px) {
+  .navbar-modern {
+    padding: 0.6rem 0;
+  }
+
+  .navbar-modern .navbar-brand img {
+    height: 45px !important;
+  }
+
+  .navbar-modern .nav-link {
+    padding: 0.6rem 0.8rem !important;
+    font-size: 0.9rem;
+  }
+
+  .navbar-modern .btn-primary-custom {
+    width: 100%;
+    padding: 0.5rem !important;
+    font-size: 0.85rem;
+    margin-top: 8px !important;
+    margin-left: 0 !important;
+  }
+
+  .navbar-collapse {
+    padding: 0.8rem 0;
+  }
+
+  .navbar-modern .navbar-toggler {
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+/* Mobile collapse overlay so it doesn't push page content */
+@media (max-width: 992px) {
+  .navbar-modern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .navbar-modern .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
 }

@@ -8,10 +8,10 @@ const defaultCompanyInfo = {
   shortName: "MPN",
   tagline: "Pelatihan & Pengembangan SDM Profesional, Inovatif, dan Terpercaya",
 
-  vision:
+  visi:
     "Menjadi perusahaan pelatihan dan pengembangan SDM profesional, inovatif, dan terpercaya di Indonesia.",
 
-  mission: [
+  misi: [
     "Menyelenggarakan program pelatihan berkualitas tinggi yang relevan dengan kebutuhan industri",
     "Mengembangkan kompetensi SDM melalui metode pembelajaran inovatif dan efektif",
     "Memberikan layanan konsultansi manajemen yang profesional dan solusi-oriented",
@@ -42,7 +42,7 @@ const defaultCompanyInfo = {
     "Track record yang terbukti dengan berbagai klien terkemuka",
   ],
 
-  contact: {
+  kontak: {
     phone: "0821-1472-6830",
     email: "ptmultiarthapundimasnawasena@gmail.com",
     address: "Ruko Sentra Eropa Blok B16, Ciangsana, Gunung Putri, Bogor 16968",
@@ -50,7 +50,7 @@ const defaultCompanyInfo = {
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.2!2d106.9!3d-6.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjQnMDAuMCJTIDEwNsKwNTQnMDAuMCJF!5e0!3m2!1sen!2sid!4v1234567890",
   },
 
-  socialMedia: {
+  sosial_media: {
     facebook:
       "https://www.facebook.com/profile.php?id=61581378853667&sk=about&locale=id_ID",
     instagram: "https://www.instagram.com/ptmpn.official",

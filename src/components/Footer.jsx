@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { companyInfo } from "../data/company";
-import logo from "../assets/logo-mpn.svg";
 import "../index.css"
 import "../styling/components/Footer.css"
 
@@ -15,16 +14,16 @@ const Footer = () => {
              <h2>PT. MPN</h2>
             <p className="text-white-50 mb-4">{companyInfo.tagline}</p>
             <div className="d-flex gap-3">
-              <a href={companyInfo.socialMedia.facebook} target="_blank" rel="noopener noreferrer">
+              <a href={companyInfo.sosial_media.facebook} target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-facebook fs-5"></i>
               </a>
-              <a href={companyInfo.socialMedia.instagram} target="_blank" rel="noopener noreferrer">
+              <a href={companyInfo.sosial_media.instagram} target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-instagram fs-5"></i>
               </a>
-              <a href={companyInfo.socialMedia.linkedin} target="_blank" rel="noopener noreferrer">
+              <a href={companyInfo.sosial_media.linkedin} target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-linkedin fs-5"></i>
               </a>
-              <a href={companyInfo.socialMedia.youtube} target="_blank" rel="noopener noreferrer">
+              <a href={companyInfo.sosial_media.youtube} target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-youtube fs-5"></i>
               </a>
             </div>
@@ -68,16 +67,16 @@ const Footer = () => {
             <ul className="list-unstyled small">
               <li className="mb-3 d-flex align-items-start">
                 <i className="bi bi-geo-alt-fill me-2 mt-1"></i>
-                <span className="text-white-50">{companyInfo.contact.address}</span>
+                <span className="text-white-50">{companyInfo.kontak.address}</span>
               </li>
               <li className="mb-3 d-flex align-items-center">
                 <i className="bi bi-telephone-fill me-2"></i>
-                <a href={`tel:${companyInfo.contact.phone}`}>{companyInfo.contact.phone}</a>
+                <a href={`tel:${companyInfo.kontak.phone}`}>{companyInfo.kontak.phone}</a>
               </li>
               <li className="mb-3 d-flex align-items-center">
                 <i className="bi bi-envelope-fill me-2"></i>
-                <a href={`mailto:${companyInfo.contact.email}`} className="text-break">
-                  {companyInfo.contact.email}
+                <a href={`mailto:${companyInfo.kontak.email}`} className="text-break">
+                  {companyInfo.kontak.email}
                 </a>
               </li>
             </ul>

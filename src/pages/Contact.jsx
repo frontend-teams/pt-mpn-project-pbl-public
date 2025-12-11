@@ -82,7 +82,7 @@ function Contact() {
                                     </div>
                                     <div className="text-center my-4">
                                         <p>
-                                            <i className="bi bi-geo-alt fs-4 me-2 mt-1 text-gradient"></i><a href="https://maps.app.goo.gl/moAyGBTCi9TcRVs46">{companyInfo.contact.address}</a>
+                                            <i className="bi bi-geo-alt fs-4 me-2 mt-1 text-gradient"></i><a href="https://maps.app.goo.gl/moAyGBTCi9TcRVs46">{companyInfo.kontak.address}</a>
                                         </p>
                                     </div>
                                     <p className="text-center">
@@ -107,7 +107,7 @@ function Contact() {
                                         </li>
                                         <li className="d-flex align-items-center justify-content-center mb-3">
                                             <i className="bi bi-envelope-fill me-2 mt-1 fs-5 text-gradient"></i>
-                                            <a href={`mailto:${companyInfo.kontak.email}`}>{companyInfo.contact.email}</a>
+                                            <a href={`mailto:${companyInfo.kontak.email}`}>{companyInfo.kontak.email}</a>
                                         </li>
                                     </ul>
                                 </Card.Body>

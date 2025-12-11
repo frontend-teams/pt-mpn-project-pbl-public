@@ -53,7 +53,7 @@ function About() {
                     <i className="bi bi-bullseye fs-4 text-gradient"></i>
                   </div>
                   <h3 className="h4 fw-bold mb-3">Visi Kami</h3>
-                  <p className="text-muted fs-5">{companyInfo.vision}</p>
+                  <p className="text-muted fs-5">{companyInfo.visi}</p>
                 </Card.Body>
               </Card>
             </Col>
@@ -66,7 +66,7 @@ function About() {
                   </div>
                   <h3 className="h4 fw-bold mb-3">Misi Kami</h3>
                   <ul className="list-unstyled mb-0">
-                    {companyInfo.mission.map((item, index) => (
+                    {companyInfo.misi.map((item, index) => (
                       <li
                         key={index}
                         className="d-flex align-items-center mb-3"
@@ -154,7 +154,7 @@ function About() {
             <Col lg={5} className="fade-in">
               <div className="ratio ratio-16x9 shadow-custom">
                 <iframe
-                  src={companyInfo.contact.mapsEmbed}
+                  src={companyInfo.kontak.mapsEmbed}
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"

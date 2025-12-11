@@ -55,6 +55,11 @@ body {
 .btn-primary-custom:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+  background: linear-gradient(
+    135deg,
+    var(--secondary-color),
+    var(--primary-color)
+  );
 }
 
 /* Tombol outline (border tapi transparan) */
@@ -333,4 +338,304 @@ body {
 .custom-button:active {
   transform: scale(0.96);
   box-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN - Media Queries untuk semua ukuran layar
+   -------------------------------------------------------------------------- */
+
+/* Tablet & iPad (768px - 1024px) */
+@media (max-width: 1024px) {
+  body {
+    padding-top: 46px;
+  }
+
+  .hero-section {
+    padding: 60px 20px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .display-4 {
+    font-size: 2rem !important;
+  }
+
+  .btn-primary-custom,
+  .custom-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablet (768px - 992px) */
+@media (max-width: 992px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .hero-section {
+    padding: 50px 20px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .display-4 {
+    font-size: 1.75rem !important;
+  }
+
+  .fs-5 {
+    font-size: 1rem !important;
+  }
+
+  /* Course cards */
+  .course-card {
+    margin-bottom: 20px;
+  }
+
+  /* Detail container */
+  .detail-container {
+    margin: 20px auto 40px auto;
+    padding: 0 15px;
+  }
+
+  /* Navbar adjustments */
+  .navbar-modern {
+    padding: 10px 0;
+  }
+}
+
+/* Mobile (480px - 768px) */
+@media (max-width: 768px) {
+  body {
+    padding-top: 56px;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  .hero-section {
+    padding: 40px 15px;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .display-4 {
+    font-size: 1.5rem !important;
+  }
+
+  .fs-5 {
+    font-size: 0.95rem !important;
+  }
+
+  /* Buttons */
+  .btn-primary-custom,
+  .custom-button,
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  /* Grid layouts */
+  .row {
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+
+  [class*="col-"] {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  /* Course cards */
+  .course-card {
+    margin-bottom: 15px;
+  }
+
+  .course-img {
+    height: 140px;
+  }
+
+  /* Accordion */
+  .accordion-header {
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .accordion-header h3 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .service-card {
+    padding: 15px;
+  }
+
+  .service-card h4 {
+    font-size: 0.95rem;
+  }
+
+  .service-card p {
+    font-size: 0.85rem;
+  }
+
+  /* Detail container */
+  .detail-container {
+    margin: 15px auto 30px auto;
+    padding: 0 12px;
+    max-width: 100%;
+  }
+
+  .services-container {
+    gap: 15px;
+  }
+}
+
+/* Small mobile (320px - 480px) */
+@media (max-width: 480px) {
+  body {
+    padding-top: 56px;
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+
+  .hero-section {
+    padding: 30px 12px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .display-4 {
+    font-size: 1.25rem !important;
+  }
+
+  .fs-5 {
+    font-size: 0.9rem !important;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-size: 0.95rem;
+  }
+
+  /* Buttons */
+  .btn-primary-custom,
+  .custom-button,
+  .btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  /* Sections */
+  .section-padding {
+    padding: 40px 12px;
+  }
+
+  /* Course cards */
+  .course-card {
+    margin-bottom: 12px;
+  }
+
+  .course-img {
+    height: 120px;
+  }
+
+  .course-content p {
+    font-size: 0.85rem;
+  }
+
+  /* Accordion */
+  .accordion {
+    margin-bottom: 10px;
+  }
+
+  .accordion-header {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .accordion-header h3 {
+    font-size: 0.9rem;
+  }
+
+  .accordion-header span {
+    font-size: 1.2rem;
+  }
+
+  .service-card {
+    padding: 12px;
+  }
+
+  .service-card h4 {
+    font-size: 0.9rem;
+  }
+
+  .service-card p {
+    font-size: 0.8rem;
+  }
+
+  /* Detail container */
+  .detail-container {
+    margin: 10px auto 20px auto;
+    padding: 0 10px;
+  }
+
+  .services-container {
+    gap: 10px;
+  }
+
+  /* Navbar */
+  .navbar-modern {
+    padding: 8px 0;
+  }
+
+  .navbar-brand img {
+    height: 50px !important;
+  }
+
+  /* Cards */
+  .Layanan-card {
+    padding: 15px;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 30px 12px;
+  }
+
+  .cta-section h2 {
+    font-size: 1.35rem;
+  }
+
+  .cta-section p {
+    font-size: 0.9rem;
+  }
 }

@@ -25,9 +25,9 @@ const photos = [
 const Gallery = () => {
   return (
     <section className="py-5 overflow-hidden">
-      <h1 className="text-center fw-bold">Gallery from Our Courses</h1>
+      <h1 className="display-4 fw-bold text-gradient pb-1 mb-2 text-center">Galeri Kami</h1>
       <p className="text-center text-muted mb-5">
-        Strategists, designers, and innovators.
+        Jelajahi momen-momen berharga dari berbagai pelatihan dan kegiatan kami
       </p>
 
       <div className="fade-edges-wrapper w-100" style={{ height: "441px" }}>
