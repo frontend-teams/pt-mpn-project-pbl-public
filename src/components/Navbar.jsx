@@ -47,7 +47,7 @@ const Navbar = () => {
             ))}
 
             <Link
-              to="/contact"
+              to="/training"
               className="btn btn-primary-custom ms-lg-3"
               onClick={() => setMenuOpen(false)}
             >

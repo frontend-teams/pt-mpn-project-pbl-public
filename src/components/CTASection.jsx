@@ -45,7 +45,7 @@ function CTASection() {
                     size="md"
                     className="cta-btn"
                   >
-                    <i class="bi bi-whatsapp"></i> Hubungi Admin Kami
+                    <i className="bi bi-whatsapp"></i> Hubungi Admin Kami
                   </Button>
 
                   <Button
