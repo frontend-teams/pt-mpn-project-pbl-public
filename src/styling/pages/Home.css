@@ -1,0 +1,245 @@
+/* --------------------------------------------------------------------------
+   HOME PAGE STYLES - Responsive design untuk halaman utama
+   -------------------------------------------------------------------------- */
+
+/* Hero section home */
+.home-hero {
+  padding: 100px 20px;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  color: #6c757d;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #003d82, #00acc1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-custom {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE - Home Page
+   -------------------------------------------------------------------------- */
+
+/* Tablet (1024px - 768px) */
+@media (max-width: 1024px) {
+  .home-hero {
+    padding: 80px 20px;
+    min-height: 500px;
+  }
+
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* Tablet (768px - 992px) */
+@media (max-width: 992px) {
+  .home-hero {
+    padding: 60px 20px;
+    min-height: 400px;
+  }
+
+  .hero-title {
+    font-size: 2.3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .d-flex.flex-column.flex-sm-row.gap-3 {
+    gap: 15px !important;
+  }
+}
+
+/* Mobile (768px - 480px) */
+@media (max-width: 768px) {
+  .home-hero {
+    padding: 50px 15px;
+    min-height: 350px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+  }
+
+  .d-flex.flex-column.flex-sm-row.gap-3 {
+    gap: 12px !important;
+  }
+
+  .btn-primary-custom,
+  .custom-button {
+    width: 100%;
+  }
+}
+
+/* Small mobile (480px - 320px) */
+@media (max-width: 480px) {
+  .home-hero {
+    padding: 40px 12px;
+    min-height: 300px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+
+  .d-flex.flex-column.flex-sm-row.gap-3 {
+    gap: 10px !important;
+    flex-direction: column !important;
+  }
+
+  .btn-primary-custom,
+  .custom-button {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-primary-custom i,
+  .custom-button i {
+    font-size: 0.9rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SECTIONS RESPONSIVE
+   -------------------------------------------------------------------------- */
+
+/* Courses section responsive */
+.courses-section {
+  padding: 60px 20px;
+}
+
+@media (max-width: 992px) {
+  .courses-section {
+    padding: 50px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .courses-section {
+    padding: 40px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .courses-section {
+    padding: 30px 10px;
+  }
+}
+
+/* Clients/Partners section responsive */
+.clients-section {
+  padding: 40px 20px;
+}
+
+@media (max-width: 992px) {
+  .clients-section {
+    padding: 35px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .clients-section {
+    padding: 30px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .clients-section {
+    padding: 20px 10px;
+  }
+}
+
+/* Services section responsive */
+.services-section {
+  padding: 60px 20px;
+}
+
+@media (max-width: 992px) {
+  .services-section {
+    padding: 50px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-section {
+    padding: 40px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-section {
+    padding: 30px 10px;
+  }
+}
+
+/* Gallery section responsive */
+.gallery-section {
+  padding: 60px 20px;
+}
+
+@media (max-width: 992px) {
+  .gallery-section {
+    padding: 50px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 40px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-section {
+    padding: 30px 10px;
+  }
+}

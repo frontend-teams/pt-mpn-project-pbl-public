@@ -4,247 +4,246 @@
    STYLE UNTUK HALAMAN LIST LAYANAN
    ========================================================= */
 .Layanan {
-    margin: 160px 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  margin: 160px 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .Layanan p {
-    padding-bottom: 20px;
-    font-size: 13px;
-    color: rgb(50, 50, 50);
+  padding-bottom: 20px;
+  font-size: 13px;
+  color: rgb(50, 50, 50);
 }
 
 .Layanan h1 {
-    font-family: "Open Sans", sans-serif;
-    padding-bottom: 10px;
+  font-family: "Open Sans", sans-serif;
+  padding-bottom: 10px;
 }
 
 .Layanan hr {
-    width: 10%;
+  width: 10%;
 }
 
 .info-pro {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .info-pro p {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .Layanans-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    max-width: 100%;
-    margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 100%;
+  margin: auto;
 }
 
 .Layanan-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: 0.3s ease;
-     display: flex;
-    flex-direction: column;
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .Layanan-card:hover {
-    transform: translateY(-6px);
+  transform: translateY(-6px);
 }
 
 .Layanan-card img {
-    width: 100%;
-    border-radius: 12px;
-    margin-bottom: 15px;
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
 }
 
 .Layanan-card h3 {
-    color: #1e40af;
-    margin-bottom: 8px;
+  color: #1e40af;
+  margin-bottom: 8px;
 }
 
 .Layanan-card p {
-    color: #555;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    flex-grow: 1;
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  flex-grow: 1;
 }
 
 .skills {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .skills span {
-    display: inline-block;
-    background: #e0e7ff;
-    color: #1e3a8a;
-    font-size: 0.8rem;
-    padding: 5px 10px;
-    border-radius: 6px;
-    margin: 3px;
-    transition: background 0.3s;
+  display: inline-block;
+  background: #e0e7ff;
+  color: #1e3a8a;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin: 3px;
+  transition: background 0.3s;
 }
 
 .skills span:hover {
-    background: #c7d2fe;
+  background: #c7d2fe;
 }
 
 .btns {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: auto;
 }
 
 .btn-services {
-    background: #1e40af;
-    border: none;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
-    border-radius: 1.5rem;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    width: fit-content;
-    margin-top: auto; 
+  background: #1e40af;
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 1.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin-top: auto;
 }
 
 .btn:hover {
-    background: #2563eb;
+  background: #2563eb;
 }
 
 /* =======================
    RESPONSIVE TABLET
    ======================= */
 @media (max-width: 992px) {
-    .Layanan {
-        margin: 120px 100px;
-    }
+  .Layanan {
+    margin: 120px 100px;
+  }
 
-    .Layanans-container {
-        gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
+  .Layanans-container {
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
 }
 
 /* =======================
    RESPONSIVE PHONE
    ======================= */
 @media (max-width: 576px) {
-    .Layanan {
-        margin: 80px auto;
-        padding: 0 15px;
-        text-align: center;
-    }
+  .Layanan {
+    margin: 80px auto;
+    padding: 0 15px;
+    text-align: center;
+  }
 
-    .Layanans-container {
-        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-        gap: 15px;
-    }
+  .Layanans-container {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 15px;
+  }
 
-    .Layanan-card {
-        width: 100%;
-        max-width: 100%;
-    }
+  .Layanan-card {
+    width: 100%;
+    max-width: 100%;
+  }
 
-    .Layanan-card h3 {
-        font-size: 1rem;
-    }
+  .Layanan-card h3 {
+    font-size: 1rem;
+  }
 
-    .Layanan-card p {
-        font-size: 0.8rem;
-    }
+  .Layanan-card p {
+    font-size: 0.8rem;
+  }
 
-    .skills a {
-        font-size: 0.75rem;
-        padding: 4px 8px;
-    }
+  .skills a {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
 
-    .btn {
-        font-size: 0.8rem;
-        padding: 7px 12px;
-    }
+  .btn {
+    font-size: 0.8rem;
+    padding: 7px 12px;
+  }
 }
 
 /* =========================================================
    STYLE UNTUK HALAMAN DETAIL LAYANAN (ACCORDION)
    ========================================================= */
 .detail-container {
-    max-width: 1100px;
-    width: 100%;
-    margin: 150px auto 50px auto;
-    /* jarak seperti halaman layanan */
-    padding: 0 20px;
+  max-width: 1100px;
+  width: 100%;
+  margin: auto;
+  /* jarak seperti halaman layanan */
+  padding: 0 20px;
 }
 
-
 .services-container {
-    display: grid;
-    gap: 25px;
-    margin: auto;
+  display: grid;
+  gap: 25px;
+  margin: auto;
 }
 
 .services-container h1 {
-    text-align: center;
-    font-family: "Open Sans", sans-serif;
-    margin-bottom: 10px;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 10px;
 }
 
 .accordion {
-    width: 100%;
-    max-width: 1200px;
-    border: 1px solid #3b1717;
-    border-radius: 10px;
-    margin: 20px auto;
-    overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  border: 1px solid #3b1717;
+  border-radius: 10px;
+  margin: 20px auto;
+  overflow: hidden;
 }
 
 .accordion-header {
-    background: #f5f5f5;
-    padding: 18px 20px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background: #f5f5f5;
+  padding: 18px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .accordion-header h3 {
-    margin: 0;
+  margin: 0;
 }
 
 .accordion-content {
-    padding: 20px;
-    background: white;
+  padding: 20px;
+  background: white;
 }
 
 .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
 }
 
 .service-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    background: white;
-    transition: 0.3s;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  background: white;
+  transition: 0.3s;
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .service-card h4 {
-    margin-top: 0;
-    color: #0d6efd;
+  margin-top: 0;
+  color: #0d6efd;
 }
 
 /* import index.css untuk akses global variable */
@@ -252,75 +251,79 @@
 
 /* Animasi Fade-in */
 .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
 }
 
 @keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Gaya untuk Section Title dengan garis aksen */
 .section-title {
-    position: relative;
+  position: relative;
 }
 
 .section-title::after {
-    content: "";
-    width: 60px;
-    height: 4px;
-    background: var(--secondary-color);
-    display: block;
-    margin: 0.75rem auto 0;
-    border-radius: 2px;
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: var(--secondary-color);
+  display: block;
+  margin: 0.75rem auto 0;
+  border-radius: 2px;
 }
 
 /* Hero Section Enhancement */
 .hero-section {
-    background: linear-gradient(135deg, rgba(0, 61, 130, 0.06), rgba(0, 172, 193, 0.15));
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 61, 130, 0.06),
+    rgba(0, 172, 193, 0.15)
+  );
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .hero-section h1 {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 /* Keunggulan & Legalitas Card Hover */
 .card-custom {
-    border-radius: 1rem;
-    background: white;
+  border-radius: 1rem;
+  background: white;
 }
 
 /* Map container rounding */
 .ratio iframe {
-    border-radius: 1rem;
+  border-radius: 1rem;
 }
 
 /* Extra spacing for lists on mission & legalitas */
 .list-unstyled li span {
-    font-size: 0.95rem;
+  font-size: 0.95rem;
 }
 
 .card-custom:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 .card-icon i {
-    font-size: 1.4rem !important;
+  font-size: 1.4rem !important;
 }
 
 .icon-circle {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* .icon-primary {
@@ -338,25 +341,24 @@
   color: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 } */
 
-
 .bg-primary-soft {
-    background: rgba(13, 110, 253, 0.08);
+  background: rgba(13, 110, 253, 0.08);
 }
 
 .bg-secondary-soft {
-    background: rgba(108, 117, 125, 0.08);
+  background: rgba(108, 117, 125, 0.08);
 }
 
 .bg-success-soft {
-    background: rgba(25, 135, 84, 0.08);
+  background: rgba(25, 135, 84, 0.08);
 }
 
 .bg-warning-soft {
-    background: rgba(255, 193, 7, 0.15);
+  background: rgba(255, 193, 7, 0.15);
 }
 
 .bg-info-soft {
-    background: rgba(13, 202, 240, 0.15);
+  background: rgba(13, 202, 240, 0.15);
 }
 
 /* 
@@ -365,3 +367,180 @@
 .icon-success { color: #198754; }
 .icon-warning { color: #ffc107; }
 .icon-info { color: #0dcaf0; } */
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN - Services Page
+   -------------------------------------------------------------------------- */
+
+/* Tablet (768px - 992px) */
+@media (max-width: 992px) {
+  .Layanan {
+    margin: 100px 20px;
+  }
+
+  .Layanans-container {
+    gap: 20px;
+  }
+
+  .detail-container {
+    max-width: 95%;
+    margin: 20px auto 40px auto;
+  }
+
+  .services-container {
+    gap: 15px;
+  }
+
+  .accordion-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+}
+
+/* Mobile (480px - 768px) */
+@media (max-width: 768px) {
+  .Layanan {
+    margin: 80px 15px;
+  }
+
+  .Layanan h1 {
+    font-size: 1.75rem;
+  }
+
+  .Layanans-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .Layanan-card {
+    padding: 15px;
+  }
+
+  .detail-container {
+    max-width: 100%;
+    margin: 15px auto 30px auto;
+    padding: 0 12px;
+  }
+
+  .services-container {
+    gap: 12px;
+  }
+
+  .accordion {
+    margin-bottom: 12px;
+  }
+
+  .accordion-header {
+    padding: 15px;
+    font-size: 0.95rem;
+  }
+
+  .accordion-header h3 {
+    font-size: 1rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .service-card {
+    padding: 15px;
+  }
+
+  .service-card h4 {
+    font-size: 0.95rem;
+  }
+
+  .service-card p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Small mobile (320px - 480px) */
+@media (max-width: 480px) {
+  .Layanan {
+    margin: 60px 12px;
+  }
+
+  .Layanan h1 {
+    font-size: 1.5rem;
+  }
+
+  .Layanan p {
+    font-size: 12px;
+  }
+
+  .Layanans-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .Layanan-card {
+    padding: 12px;
+  }
+
+  .Layanan-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .Layanan-card p {
+    font-size: 0.85rem;
+  }
+
+  .Layanan-card button {
+    font-size: 0.85rem;
+  }
+
+  .detail-container {
+    max-width: 100%;
+    margin: 10px auto 20px auto;
+    padding: 0 10px;
+  }
+
+  .services-container {
+    gap: 10px;
+  }
+
+  .accordion {
+    margin-bottom: 8px;
+  }
+
+  .accordion-header {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .accordion-header h3 {
+    font-size: 0.9rem;
+  }
+
+  .accordion-header span {
+    font-size: 1rem;
+  }
+
+  .accordion-content {
+    padding: 12px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .service-card {
+    padding: 12px;
+  }
+
+  .service-card h4 {
+    font-size: 0.9rem;
+  }
+
+  .service-card p {
+    font-size: 0.8rem;
+  }
+}

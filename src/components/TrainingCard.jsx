@@ -7,7 +7,7 @@ const TrainingCard = ({ item, onOpen, index = 0 }) => {
       className="col-md-4 col-sm-6 fade-in-up"
       style={{ animationDelay: `${index * 0.12}s` }}
     >
-      <div className="card h-100 shadow-lg border">
+      <div className="card shadow-lg border rounded-4 p-3 h-100">
         <img
           src={item.image}
           className="card-img-top"

@@ -24,11 +24,9 @@ function App() {
           <Route path="/services/:id" element={<DetailServices />} />
           <Route path="/training" element={<Training />} />
           <Route path="/training/:id" element={<TrainingDetail />} />
-          {/* <Route path="/team" element={<Team />} />
+          {/* <Route path="/team" element={<Team />} /> */}
           {/* <Route path="*" element={<NotFound />} /> */}
           <Route path="/services" element={<Services />} />
-          <Route path="/training" element={<Training />} />
-          <Route path="/training/:id" element={<TrainingDetail />} />
           <Route path="/team" element={<OurTeam />} />
         </Routes>
         <Footer />
