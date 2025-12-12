@@ -1,13 +1,14 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
+import { WA_NUMBER } from "../data/training";
 
 const TrainingDetailModal = ({ show, onClose, data }) => {
   if (!data) return null;
 
   const handleWhatsApp = () => {
-    const WA_NUMBER = "6282114726830";
+    const targetNumber = data?.waNumber || WA_NUMBER;
     const message = `Halo, saya ingin mendaftar untuk pelatihan "${data.title}".`;
-    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
+    const url = `https://wa.me/${targetNumber}?text=${encodeURIComponent(
       message
     )}`;
     window.open(url, "_blank");

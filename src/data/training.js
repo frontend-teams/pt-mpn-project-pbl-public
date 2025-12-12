@@ -1,3 +1,5 @@
+export const WA_NUMBER = "6282114726830";
+
 const trainings = [
   {
     id: 1,
@@ -22,7 +24,7 @@ const trainings = [
       "Korespondensi & Pengelolaan Surat",
       "Pengelolaan Jadwal & Penataan Agenda",
       "Customer Service & Front Office",
-      "Microsoft Office (Word, Excel, PowerPoint)"
+      "Microsoft Office (Word, Excel, PowerPoint)",
     ],
   },
   {
@@ -37,7 +39,7 @@ const trainings = [
       "Pengembangan Produk & Inovasi",
       "Digital Marketing untuk UMKM",
       "Business Model Canvas & Perencanaan Bisnis",
-      "Strategi Penjualan & Branding UMKM"
+      "Strategi Penjualan & Branding UMKM",
     ],
   },
   {
@@ -53,7 +55,7 @@ const trainings = [
       "Desain Grafis",
       "Content Creation",
       "Penggunaan Tools Digital Perkantoran",
-      "Website & SEO Basic"
+      "Website & SEO Basic",
     ],
   },
   {

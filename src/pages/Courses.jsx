@@ -76,6 +76,9 @@ const Courses = () => {
                   src={course.image}
                   className="img-fluid course-img"
                   alt={course.title}
+                  loading="lazy"
+                  width="600"
+                  height="160"
                 />
 
                 <div className="course-content p-3 text-black text-start">

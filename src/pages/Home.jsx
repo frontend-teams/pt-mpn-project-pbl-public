@@ -5,12 +5,19 @@ import "../styling/pages/Home.css";
 
 import Courses from "./Courses";
 import Services from "./Services";
+import usePageMeta from "../utils/usePageMeta";
 
 /* carousel */
 import Clients from "./Clients";
 import Gallery from "./Gallery";
 
 function Home() {
+  usePageMeta({
+    title: "PT MPN | Pelatihan & Pengembangan SDM Profesional",
+    description:
+      "Pelatihan, pengembangan SDM, konsultansi manajemen, sertifikasi, dan penyediaan SDM. Tingkatkan kompetensi tim Anda bersama PT MPN.",
+    ogType: "website",
+  });
   return (
     <>
       <div>

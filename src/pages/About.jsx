@@ -3,8 +3,15 @@ import { companyInfo } from "../data/company";
 import "../styling/pages/About.css";
 import "../index.css";
 import CTASection from "../components/CTASection";
+import usePageMeta from "../utils/usePageMeta";
 
 function About() {
+  usePageMeta({
+    title: "Tentang PT MPN — Profil, Visi & Misi",
+    description:
+      "Mengenal PT MPN: profil perusahaan, visi misi, keunggulan, dan legalitas. Mitra pelatihan dan pengembangan SDM terpercaya.",
+    ogType: "website",
+  });
   return (
     <div>
       {/* Hero Section */}
@@ -19,7 +26,6 @@ function About() {
             </p>
           </div>
         </Container>
-        
       </section>
 
       {/* Company Profile */}
@@ -171,4 +177,3 @@ function About() {
 }
 
 export default About;
-
