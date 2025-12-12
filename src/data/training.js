@@ -1,3 +1,5 @@
+export const WA_NUMBER = "6282114726830";
+
 const trainings = [
   {
     id: 1,
@@ -22,7 +24,7 @@ const trainings = [
       "Korespondensi & Pengelolaan Surat",
       "Pengelolaan Jadwal & Penataan Agenda",
       "Customer Service & Front Office",
-      "Microsoft Office (Word, Excel, PowerPoint)"
+      "Microsoft Office (Word, Excel, PowerPoint)",
     ],
   },
   {
@@ -37,7 +39,7 @@ const trainings = [
       "Pengembangan Produk & Inovasi",
       "Digital Marketing untuk UMKM",
       "Business Model Canvas & Perencanaan Bisnis",
-      "Strategi Penjualan & Branding UMKM"
+      "Strategi Penjualan & Branding UMKM",
     ],
   },
   {
@@ -45,7 +47,7 @@ const trainings = [
     category: "non-formal",
     title: "Pelatihan Digital",
     desc: "Pelatihan Digital berfokus pada peningkatan kompetensi teknologi peserta agar mampu beradaptasi dengan kebutuhan dunia kerja yang serba digital. Program ini memberikan pemahaman tentang penggunaan aplikasi digital, pengolahan data sederhana, pembuatan konten, hingga pemanfaatan platform online. Pelatihan ini sangat relevan untuk SDM yang ingin meningkatkan efisiensi dan produktivitas melalui teknologi.",
-    image: "/src/assets/courses/lead_generation.jpg",
+    image: "/src/assets/courses/pelatihan-digital.jpeg",
     jenisPelatihan: [
       "Digital Marketing",
       "Social Media Management",
@@ -53,7 +55,7 @@ const trainings = [
       "Desain Grafis",
       "Content Creation",
       "Penggunaan Tools Digital Perkantoran",
-      "Website & SEO Basic"
+      "Website & SEO Basic",
     ],
   },
   {

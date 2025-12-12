@@ -3,6 +3,7 @@ import "../styling/pages/About.css";
 import "../index.css";
 import CTASection from "../components/CTASection";
 import { companyInfo } from "../data/company";
+import heroImage from "../assets/gallery/image6.jpeg";
 
 function About() {
   
@@ -20,7 +21,6 @@ function About() {
             </p>
           </div>
         </Container>
-
       </section>
 
       {/* Company Profile */}
@@ -29,7 +29,7 @@ function About() {
           <Row className="align-items-start justify-content-center g-4">
             <Col lg={5} className="fade-in">
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070"
+                src={heroImage}
                 alt="Team Collaboration"
                 className="img-fluid rounded shadow-custom"
               />
@@ -172,4 +172,3 @@ function About() {
 }
 
 export default About;
-

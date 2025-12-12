@@ -5,8 +5,15 @@ import TrainingDetail from "./TrainingDetail";
 import "../styling/pages/Training.css";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import "../index.css";
+import usePageMeta from "../utils/usePageMeta";
 
 const Training = () => {
+  usePageMeta({
+    title: "Program Pelatihan PT MPN — Nonformal & Keterampilan Kerja",
+    description:
+      "Pilih berbagai program pelatihan nonformal dan keterampilan kerja: soft skills, administrasi, digital, operator alat berat, welding, dan lainnya.",
+    ogType: "website",
+  });
   const [selectedTraining, setSelectedTraining] = useState(null);
   const [show, setShow] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -43,10 +50,11 @@ const Training = () => {
 
   return (
     <div
-      className={`${mounted
-        ? "training-slide-up-enter training-fade-enter"
-        : "training-slide-up-init training-fade-init"
-        }`}
+      className={`${
+        mounted
+          ? "training-slide-up-enter training-fade-enter"
+          : "training-slide-up-init training-fade-init"
+      }`}
     >
       <section className="hero-section">
         <Container>
@@ -112,9 +120,8 @@ const Training = () => {
           onClose={closeModal}
           data={selectedTraining}
         />
-      </section >
+      </section>
     </div>
-
   );
 };
 

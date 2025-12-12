@@ -4,6 +4,7 @@ import { FaClock, FaLaptop, FaCalendar } from "react-icons/fa";
 import img1 from "../assets/courses/digital_marketing.jpg";
 import img2 from "../assets/courses/business_consulting.jpg";
 import img3 from "../assets/courses/lead_generation.jpg";
+import img4 from "../assets/courses/pelatihan-digital.jpeg";
 
 const courses = [
   {
@@ -36,7 +37,7 @@ const courses = [
     type: "Online",
     description:
       "Pelatihan Digital berfokus pada peningkatan kompetensi teknologi peserta agar mampu beradaptasi dengan kebutuhan dunia kerja yang serba digital.",
-    image: img1,
+    image: img4,
   },
   {
     title: "Pelatihan Operator Alat Berat",
@@ -76,6 +77,9 @@ const Courses = () => {
                   src={course.image}
                   className="img-fluid course-img"
                   alt={course.title}
+                  loading="lazy"
+                  width="600"
+                  height="160"
                 />
 
                 <div className="course-content p-3 text-black text-start">

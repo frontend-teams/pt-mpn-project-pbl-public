@@ -5,6 +5,7 @@ import { NavLink } from "../components/NavLink";
 import logo from "../assets/logo-mpn.svg";
 import "../index.css";
 import "../styling/components/Navbar.css";
+import { WA_NUMBER } from "../data/training";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,15 +19,7 @@ const Navbar = () => {
     { to: "/contact", label: "Kontak" },
   ];
 
-  const handleWhatsApp = () => {
-    const WA_NUMBER = "6282114726830";
-    const message =
-      "Halo, saya ingin mengetahui lebih lanjut tentang layanan Anda.";
-    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(url, "_blank");
-  };
+  // WhatsApp handled via CTA link below using shared WA_NUMBER
 
   return (
     <BSNavbar
@@ -57,18 +50,20 @@ const Navbar = () => {
               </NavLink>
             ))}
 
-            <button
+            <a
+              href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
+                "Halo, saya ingin mengetahui lebih lanjut tentang layanan Anda."
+              )}`}
+              target="_blank"
+              rel="noopener"
               className="btn btn-primary-custom ms-lg-3"
-              onClick={() => {
-                handleWhatsApp();
-                setMenuOpen(false);
-              }}
+              onClick={() => setMenuOpen(false)}
             >
               <div className="d-flex gap-2">
                 <i className="bi bi-whatsapp"></i>
                 Whatsapp Kami
               </div>
-            </button>
+            </a>
           </Nav>
         </BSNavbar.Collapse>
       </Container>
