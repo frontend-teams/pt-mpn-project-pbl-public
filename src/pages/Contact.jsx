@@ -5,16 +5,8 @@ import "../index.css";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useState } from "react";
-import { Modal } from "bootstrap";
-import usePageMeta from "../utils/usePageMeta";
 
 function Contact() {
-  usePageMeta({
-    title: "Kontak PT MPN — Konsultasi & Informasi Pelatihan",
-    description:
-      "Hubungi PT MPN untuk konsultasi pelatihan, penawaran, dan kerja sama. Respon cepat via WhatsApp atau form.",
-    ogType: "website",
-  });
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [layanan, setLayanan] = useState("");
@@ -23,8 +15,8 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("", {
-        nama_pesan: nama,
+      .post("http://202.10.47.174:8000/api/pesan/add/", {
+        name_pesan: nama,
         email_pesan: email,
         layanan_pesan: layanan,
         pesan_isi: isi,
@@ -93,7 +85,7 @@ function Contact() {
                     <p>
                       <i className="bi bi-geo-alt fs-4 me-2 mt-1 text-gradient"></i>
                       <a href="https://maps.app.goo.gl/moAyGBTCi9TcRVs46">
-                        {companyInfo.contact.address}
+                        {companyInfo.kontak.address}
                       </a>
                     </p>
                   </div>
@@ -103,32 +95,32 @@ function Contact() {
                   <ul className="list-unstyled mb-0">
                     <li className="d-flex align-items-center justify-content-center mb-3">
                       <i className="bi bi-telephone me-2 mt-1 fs-5 text-gradient"></i>
-                      <a href={`tel:${companyInfo.contact.phone}`}>
+                      <a href={`tel:${companyInfo.kontak.phone}`}>
                         0821-1472-6830
                       </a>
                     </li>
                     <li className="d-flex align-items-center justify-content-center mb-3">
                       <i className="bi bi-instagram me-2 mt-1 fs-5 text-gradient"></i>
-                      <a href={companyInfo.socialMedia.instagram}>
+                      <a href={companyInfo.sosial_media.instagram}>
                         ptmpn.official
                       </a>
                     </li>
                     <li className="d-flex align-items-center justify-content-center mb-3">
                       <i className="bi bi-youtube me-2 mt-1 fs-5 text-gradient"></i>
-                      <a href={companyInfo.socialMedia.youtube}>
+                      <a href={companyInfo.sosial_media.youtube}>
                         Mitra Pelatihan Nasional
                       </a>
                     </li>
                     <li className="d-flex align-items-center justify-content-center mb-3">
                       <i className="bi bi-facebook me-2 mt-1 fs-5 text-gradient"></i>
-                      <a href={companyInfo.socialMedia.facebook}>
+                      <a href={companyInfo.sosial_media.facebook}>
                         PT Multiartha Pundimas Nawasena
                       </a>
                     </li>
                     <li className="d-flex align-items-center justify-content-center mb-3">
                       <i className="bi bi-envelope-fill me-2 mt-1 fs-5 text-gradient"></i>
-                      <a href={`mailto:${companyInfo.contact.email}`}>
-                        {companyInfo.contact.email}
+                      <a href={`mailto:${companyInfo.kontak.email}`}>
+                        {companyInfo.kontak.email}
                       </a>
                     </li>
                   </ul>

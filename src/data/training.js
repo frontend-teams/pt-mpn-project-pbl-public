@@ -47,7 +47,7 @@ const trainings = [
     category: "non-formal",
     title: "Pelatihan Digital",
     desc: "Pelatihan Digital berfokus pada peningkatan kompetensi teknologi peserta agar mampu beradaptasi dengan kebutuhan dunia kerja yang serba digital. Program ini memberikan pemahaman tentang penggunaan aplikasi digital, pengolahan data sederhana, pembuatan konten, hingga pemanfaatan platform online. Pelatihan ini sangat relevan untuk SDM yang ingin meningkatkan efisiensi dan produktivitas melalui teknologi.",
-    image: "/src/assets/courses/lead_generation.jpg",
+    image: "/src/assets/courses/pelatihan-digital.jpeg",
     jenisPelatihan: [
       "Digital Marketing",
       "Social Media Management",

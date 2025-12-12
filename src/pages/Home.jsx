@@ -1,4 +1,4 @@
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { companyInfo } from "../data/company";
 import { Link } from "react-router-dom";
 import "../styling/pages/Home.css";
@@ -11,6 +11,9 @@ import usePageMeta from "../utils/usePageMeta";
 import Clients from "./Clients";
 import Gallery from "./Gallery";
 
+// Import gambar hero
+import heroImage from "../assets/gallery/image4.jpeg";
+
 function Home() {
   usePageMeta({
     title: "PT MPN | Pelatihan & Pengembangan SDM Profesional",
@@ -18,6 +21,7 @@ function Home() {
       "Pelatihan, pengembangan SDM, konsultansi manajemen, sertifikasi, dan penyediaan SDM. Tingkatkan kompetensi tim Anda bersama PT MPN.",
     ogType: "website",
   });
+
   return (
     <>
       <div>
@@ -53,9 +57,12 @@ function Home() {
               </Col>
               <Col lg={6} className="d-none d-lg-block fade-in">
                 <img
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070"
-                  alt="Team Training"
+                  src={heroImage}
+                  alt="Tim Profesional PT MPN - Pelatihan dan Pengembangan SDM Berkualitas"
                   className="img-fluid rounded shadow-custom"
+                  loading="eager"
+                  width="600"
+                  height="400"
                 />
               </Col>
             </Row>
