@@ -8,5 +8,6 @@ export default function Layanan() {
       "Layanan kami mencakup pelatihan nonformal, pengembangan SDM, pelatihan keterampilan kerja, jasa sertifikasi, dan penyediaan SDM.",
     ogType: "website",
   });
+
   return <CardServices />;
 }
