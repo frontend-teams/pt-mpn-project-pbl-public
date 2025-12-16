@@ -1,63 +1,35 @@
-import React from "react";
-import { FaClock, FaLaptop, FaCalendar } from "react-icons/fa";
-
-import img1 from "../assets/courses/digital_marketing.jpg";
-import img2 from "../assets/courses/business_consulting.jpg";
-import img3 from "../assets/courses/lead_generation.jpg";
-import img4 from "../assets/courses/pelatihan-digital.jpeg";
-
-const courses = [
-  {
-    title: "Pelatihan Soft Skill",
-    days: "2 Hari",
-    type: "Online",
-    description:
-      "Pelatihan Soft Skill dirancang untuk meningkatkan kemampuan non-teknis yang sangat dibutuhkan dalam dunia kerja modern.",
-    image: img1,
-  },
-  {
-    title: "Pelatihan Administrasi Perkantoran",
-    days: "2 Hari",
-    type: "Online",
-    description:
-      "Pelatihan ini memberikan keterampilan praktis yang dibutuhkan staf administrasi dan perkantoran agar dapat bekerja secara efisien dan profesional.",
-    image: img2,
-  },
-  {
-    title: "Pelatihan Kewirausahaan & UMKM",
-    days: "4 Hari",
-    type: "Offline",
-    description:
-      "Pelatihan Kewirausahaan & UMKM ditujukan untuk membekali peserta dengan kemampuan merencanakan, mengelola, dan mengembangkan usaha secara berkelanjutan.",
-    image: img3,
-  },
-  {
-    title: "Pelatihan Digital",
-    days: "1 Hari",
-    type: "Online",
-    description:
-      "Pelatihan Digital berfokus pada peningkatan kompetensi teknologi peserta agar mampu beradaptasi dengan kebutuhan dunia kerja yang serba digital.",
-    image: img4,
-  },
-  {
-    title: "Pelatihan Operator Alat Berat",
-    days: "2 Hari",
-    type: "Offline",
-    description:
-      "Pelatihan Operator Alat Berat dirancang untuk membekali peserta dengan keterampilan teknis dan pengetahuan keselamatan dalam mengoperasikan berbagai jenis alat berat.",
-    image: img2,
-  },
-  {
-    title: "Pelatihan Welding (SMAW, MIG, TIG)",
-    days: "2 Hari",
-    type: "Offline",
-    description:
-      "Pelatihan ini memberikan keterampilan praktis pengelasan untuk berbagai metode seperti SMAW, MIG, dan TIG.",
-    image: img3,
-  },
-];
+import React, { useState, useEffect } from "react";
+import { FaLaptop } from "react-icons/fa";
+import { fetchJenisUsaha } from "../utils/jenisUsahaApi";
+import API_BASE_URL from "../utils/apiConfig";
 
 const Courses = () => {
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getCourses = async () => {
+      try {
+        setLoading(true);
+        const data = await fetchJenisUsaha(6); // Ambil 6 data pelatihan
+        setCourses(data || []);
+      } catch (error) {
+        console.error("Gagal fetch courses:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getCourses();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="courses-section py-5 text-center">
+        <div className="spinner-border text-primary" />
+      </section>
+    );
+  }
+
   return (
     <section className="courses-section py-5">
       <div className="container text-center">
@@ -70,32 +42,26 @@ const Courses = () => {
         </p>
 
         <div className="row g-4">
-          {courses.map((course, index) => (
-            <div className="col-md-4" key={index}>
+          {courses.map((course) => (
+            <div className="col-md-4" key={course.id}>
               <div className="course-card shadow-sm">
                 <img
-                  src={course.image}
+                  src={
+                    course.foto
+                      ? `${API_BASE_URL}/uploads/${course.foto}`
+                      : "/default-training.jpg"
+                  }
                   className="img-fluid course-img"
-                  alt={course.title}
+                  alt={course.nama_jenis}
                   loading="lazy"
                   width="600"
                   height="160"
                 />
 
                 <div className="course-content p-3 text-black text-start">
-                  <h5 className="fw-semibold">{course.title}</h5>
-
-                  <div className="d-flex gap-3 align-items-center small mt-2">
-                    {/* <span>
-                      <FaClock className="me-1" /> {course.days}
-                    </span> */}
-                    <span>
-                      <FaLaptop className="me-1" /> {course.type}
-                    </span>
-                  </div>
-
+                  <h5 className="fw-semibold">{course.nama_jenis}</h5>
                   <p className="mt-2 small text-dark opacity-75">
-                    {course.description}
+                    {course.deskripsi}
                   </p>
                 </div>
               </div>

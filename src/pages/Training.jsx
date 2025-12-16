@@ -8,7 +8,7 @@ import "../styling/pages/Training.css";
 import "../index.css";
 import usePageMeta from "../utils/usePageMeta";
 
-const Training = () => {
+const Training = ({ limit = null }) => {
   usePageMeta({
     title: "Program Pelatihan PT MPN — Nonformal & Keterampilan Kerja",
     description:
@@ -19,45 +19,37 @@ const Training = () => {
   const [programs, setPrograms] = useState([]);
   const [groupedPrograms, setGroupedPrograms] = useState({});
   const [loading, setLoading] = useState(true);
-
   const [selectedTraining, setSelectedTraining] = useState(null);
   const [show, setShow] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  /**
-   * ======================================
-   * Fetch data (sekali saat mount)
-   * ======================================
-   */
+  // ======================================
+  // Fetch data pelatihan
+  // ======================================
   const getData = useCallback(async () => {
     try {
       setLoading(true);
-      const data = await fetchJenisUsaha({ noCache: true });
+      const data = await fetchJenisUsaha(limit); // Ambil data, bisa batasi limit
       setPrograms(data || []);
     } catch (error) {
       console.error("Gagal fetch program:", error);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [limit]);
 
-  /**
-   * ======================================
-   * Initial load
-   * ======================================
-   */
+  // ======================================
+  // Initial load
+  // ======================================
   useEffect(() => {
     getData();
-
     const t = setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(t);
   }, [getData]);
 
-  /**
-   * ======================================
-   * Grouping data (sinkron dengan programs)
-   * ======================================
-   */
+  // ======================================
+  // Grouping data berdasarkan bidang usaha
+  // ======================================
   useEffect(() => {
     const grouped = programs.reduce((acc, item) => {
       const field = item.bidang_usaha?.nama_BUsaha || "Lainnya";
@@ -69,7 +61,7 @@ const Training = () => {
   }, [programs]);
 
   const openModal = (item) => {
-    setSelectedTraining({ ...item }); // clone object (aman)
+    setSelectedTraining({ ...item });
     setShow(true);
   };
 
@@ -78,6 +70,9 @@ const Training = () => {
     setSelectedTraining(null);
   };
 
+  // ======================================
+  // Render
+  // ======================================
   return (
     <div
       className={
@@ -106,29 +101,33 @@ const Training = () => {
           </div>
         ) : (
           <Container>
-            {Object.keys(groupedPrograms).map((field) => (
-              <div key={field} className="mb-5">
-                <h3 className="section-title">{field}</h3>
-                <Row className="g-4">
-                  {groupedPrograms[field].map((item, idx) => (
-                    <TrainingCard
-                      key={item.id}
-                      item={{
-                        id: item.id,
-                        title: item.nama_jenis,
-                        desc: item.deskripsi,
-                        image: item.foto
-                          ? `${API_BASE_URL}/uploads/${item.foto}`
-                          : "/default-training.jpg",
-                        category: item.bidang_usaha,
-                      }}
-                      onOpen={() => openModal(item)}
-                      index={idx}
-                    />
-                  ))}
-                </Row>
-              </div>
-            ))}
+            {Object.keys(groupedPrograms).length > 0 ? (
+              Object.keys(groupedPrograms).map((field) => (
+                <div key={field} className="mb-5">
+                  <h3 className="section-title">{field}</h3>
+                  <Row className="g-4">
+                    {groupedPrograms[field].map((item, idx) => (
+                      <TrainingCard
+                        key={item.id}
+                        item={{
+                          id: item.id,
+                          title: item.nama_jenis,
+                          desc: item.deskripsi,
+                          image: item.foto
+                            ? `${API_BASE_URL}/uploads/${item.foto}`
+                            : "/default-training.jpg",
+                          category: item.bidang_usaha,
+                        }}
+                        onOpen={() => openModal(item)}
+                        index={idx}
+                      />
+                    ))}
+                  </Row>
+                </div>
+              ))
+            ) : (
+              <p className="text-center">Tidak ada data pelatihan tersedia.</p>
+            )}
           </Container>
         )}
 
