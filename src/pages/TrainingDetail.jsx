@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
+import { WA_NUMBER } from "../data/training";
 
 const TrainingDetailModal = ({ show, onClose, data }) => {
   if (!data) return null;

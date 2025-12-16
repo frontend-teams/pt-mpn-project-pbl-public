@@ -29,21 +29,21 @@ export default function CardServices() {
       <section className="section-padding bg-light">
         <Container>
           <Row className="g-4 justify-content-center">
-            {layananInfo.map((item) => (
-              <Col key={item.id} md={6} lg={4} className="fade-in">
+            {(Array.isArray(layananInfo) ? layananInfo : []).map((item, index) => (
+              <Col key={index} md={6} lg={4} className="fade-in">
                 <div className="Layanan-card shadow-custom h-100 p-3 d-flex flex-column">
                   <img
-                    src={item.image}
-                    alt={item.name}
+                    src={item.image || item.poto || item.img || item.photo || ""}
+                    alt={item.name || item.nama_BUsaha || "Layanan"}
                     className="img-fluid rounded mb-3"
                   />
-                  <h3 className="h5 fw-bold">{item.name}</h3>
-                  <p className="text-muted flex-grow-1">{item.description}</p>
+                  <h3 className="h5 fw-bold">{item.name || item.nama_BUsaha}</h3>
+                  <p className="text-muted grow">{item.description || item.deskripsi}</p>
 
                   <button
                     className="btn btn-link p-0 text-start"
                     onClick={() =>
-                      navigate(item.path, { state: { openCategory: item.id } })
+                      navigate(`/services/${item.id}`, { state: { openCategory: item.id } })
                     }
                   >
                     Lihat selengkapnya...

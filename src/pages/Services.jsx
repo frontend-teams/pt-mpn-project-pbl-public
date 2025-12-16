@@ -47,7 +47,13 @@ const Services = () => {
                   e.currentTarget.style.boxShadow = "none";
                 }}
               >
-                <img src={service.icon} width="100" alt="icon" />
+                <img
+                  src={service.icon}
+                  width="100"
+                  height="100"
+                  alt="icon"
+                  loading="lazy"
+                />
                 <p className="fw-semibold text-white text-center mb-0">
                   {service.title}
                 </p>

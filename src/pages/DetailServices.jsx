@@ -4,8 +4,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import CTASection from "../components/CTASection";
 import { detailLayanan } from "../data/detailLayanan";
+import usePageMeta from "../utils/usePageMeta";
 
 export default function DetailServices() {
+  usePageMeta({
+    title: "Detail Layanan — PT MPN",
+    description:
+      "Detail layanan PT MPN beserta materi dan manfaat yang didapat.",
+    ogType: "website",
+  });
   const { state } = useLocation();
   const navigate = useNavigate();
   const headerRefs = useRef({});
@@ -52,7 +59,8 @@ export default function DetailServices() {
         </Container>
       </section>{" "}
       <div className="detail-container">
-        <button className="btn btn-link my-4 p-0 fw-bold fs-5"
+        <button
+          className="btn btn-link my-4 p-0 fw-bold fs-5"
           onClick={() => navigate("/services")}
         >
           ← Kembali

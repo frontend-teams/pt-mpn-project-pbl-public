@@ -6,8 +6,15 @@ import API_BASE_URL from '../utils/apiConfig';
 import { Container, Row, Col } from "react-bootstrap";
 import "../styling/pages/Training.css";
 import "../index.css";
+import usePageMeta from "../utils/usePageMeta";
 
 const Training = () => {
+  usePageMeta({
+    title: "Program Pelatihan PT MPN — Nonformal & Keterampilan Kerja",
+    description:
+      "Pilih berbagai program pelatihan nonformal dan keterampilan kerja: soft skills, administrasi, digital, operator alat berat, welding, dan lainnya.",
+    ogType: "website",
+  });
   const [selectedTraining, setSelectedTraining] = useState(null);
   const [show, setShow] = useState(false);
   const [mounted, setMounted] = useState(false);

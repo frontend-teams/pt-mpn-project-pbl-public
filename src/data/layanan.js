@@ -1,45 +1,35 @@
+import axios from "axios";
 
-export const layananInfo = [
-  {
-    id: "nonformal",
-    name: "Pelatihan dan Pendidikan Nonformal",
-    description: "Program yang lebih terstruktur untuk pengembangan karir dan potensi karyawan/individu.",
-    image: "/src/assets/courses/digital_marketing.jpg",
-    path: "/services/nonformal"
-  },
-  {
-    id: "konsulmanj",
-    name: "Pengembangan SDM & Konsultansi Manajemen",
-    description: "Program untuk meningkatkan kemampuan organisasi dan pengembangan kompetensi SDM.",
-    image: "/src/assets/courses/digital_marketing.jpg",
-    path: "/services/konsulmanj"
-  },
-  {
-    id: "keterampilan",
-    name: "Pelatihan Keterampilan Kerja",
-    description: "Pelatihan untuk meningkatkan skill kerja praktis dan kesiapan kerja.",
-    image: "/src/assets/courses/digital_marketing.jpg",
-    path: "/services/keterampilan"
-  },
-  {
-    id: "eventorg",
-    name: "Event Organizer, Production House, Multimedia & Outbound",
-    description: "Layanan penyelenggaraan acara, produksi multimedia dan outbound.",
-    image: "/src/assets/courses/business_consulting.jpg",
-    path: "/services/eventorg"
-  },
-  {
-    id: "sertifikasi",
-    name: "Jasa Sertifikasi",
-    description: "Layanan sertifikasi untuk berbagai kebutuhan profesi dan industri.",
-    image: "/src/assets/courses/business_consulting.jpg",
-    path: "/services/sertifikasi"
-  },
-  {
-    id: "manpower",
-    name: "Penyediaan SDM (Manpower Supply)",
-    description: "Layanan penyediaan tenaga kerja kompeten untuk berbagai bidang.",
-    image: "/src/assets/courses/business_consulting.jpg",
-    path: "/services/manpower"
+const API_BASE_URL = "http://202.10.47.174:8000/api";
+
+
+const defaultLayananInfo = [];
+
+export let layananInfo = defaultLayananInfo;
+export const fetchLayananData = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/bidang-usaha`);
+    const data = response.data;
+
+    // handle different backend shapes (array or object with results)
+    if (Array.isArray(data)) {
+      layananInfo = data;
+    } else if (data && Array.isArray(data.results)) {
+      layananInfo = data.results;
+    } else {
+      // fallback: try to coerce to array or keep defaults
+      layananInfo = Array.isArray(defaultLayananInfo) ? defaultLayananInfo : [];
+    }
+
+    return layananInfo;
+  } catch (error) {
+    console.warn(
+      "Failed to fetch layanan data from backend, using default data:",
+      error
+    );
+    return defaultLayananInfo;
   }
-];
+};
+
+// Initialize: fetch data when module loads
+fetchLayananData();

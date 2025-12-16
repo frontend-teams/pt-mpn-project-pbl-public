@@ -26,7 +26,7 @@ function App() {
           <Route path="/training/:id" element={<TrainingDetail />} />
           {/* <Route path="/team" element={<Team />} /> */}
           {/* <Route path="*" element={<NotFound />} /> */}
-          <Route path="/services" element={<Services />} />
+          {/* Home-only Services section, not a standalone route */}
           <Route path="/team" element={<OurTeam />} />
         </Routes>
         <Footer />

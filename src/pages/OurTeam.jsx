@@ -1,10 +1,17 @@
 import React from "react";
 import TeamCard from "../components/TeamCard";
-import{ teamData } from "../data/team";
+import { teamData } from "../data/team";
 import "../styling/pages/OurTeam.css";
+import usePageMeta from "../utils/usePageMeta";
 
 // Pages Tim Kami
 function OurTeam() {
+  usePageMeta({
+    title: "Tim PT MPN — Profesional & Berpengalaman",
+    description:
+      "Berkenalan dengan tim PT MPN yang profesional dan berpengalaman di bidang pelatihan dan pengembangan SDM.",
+    ogType: "website",
+  });
   const director = teamData.find((m) => m.position === "Direktur Utama");
   const others = teamData.filter((m) => m.position !== "Direktur Utama");
 
@@ -14,7 +21,8 @@ function OurTeam() {
         <div className="fade-in">
           <h1 className="team-title">Tim Kami</h1>
           <p className="team-subtitle">
-            Perkenalkan orang-orang yang mendedikasikan diri untuk membangun, mendukung, dan mengembangkan perusahaan kami.
+            Perkenalkan orang-orang yang mendedikasikan diri untuk membangun,
+            mendukung, dan mengembangkan perusahaan kami.
           </p>
         </div>
 

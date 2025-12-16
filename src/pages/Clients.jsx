@@ -25,7 +25,10 @@ const Clients = () => {
         <h2 className="display-4 fw-bold text-gradient pb-2 my-2">
           Mitra Kami
         </h2>
-        <p>Berikut adalah beberapa mitra terpercaya yang telah bekerja sama dengan kami</p>
+        <p>
+          Berikut adalah beberapa mitra terpercaya yang telah bekerja sama
+          dengan kami
+        </p>
         <div className="d-flex justify-content-center">
           <div
             className="fade-edges-wrapper"
@@ -53,6 +56,9 @@ const Clients = () => {
                     src={logo}
                     alt={`Client ${index}`}
                     style={{ maxHeight: "70px", width: "auto" }}
+                    loading="lazy"
+                    width="140"
+                    height="70"
                   />
                 </SwiperSlide>
               ))}
