@@ -1,11 +1,12 @@
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { companyInfo } from "../data/company";
 import "../styling/components/CTASection.css";
 import "../index.css";
+import useCompanyProfile from "../hooks/useCompanyProfile";
 
 function CTASection() {
-  const phone = companyInfo?.contact?.phone || "";
+  const { profile } = useCompanyProfile();
+  const phone = profile?.kontak?.phone || "";
 
   // Convert nomor lokal Indo -> format WA internasional
   const normalizePhone = phone

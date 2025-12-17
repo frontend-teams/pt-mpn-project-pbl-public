@@ -6,9 +6,11 @@ import logo from "../assets/logo-mpn.svg";
 import "../index.css";
 import "../styling/components/Navbar.css";
 import { WA_NUMBER } from "../data/training";
+import useCompanyProfile from "../hooks/useCompanyProfile";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { profile } = useCompanyProfile();
 
   const navLinks = [
     { to: "/", label: "Home" },
@@ -20,6 +22,7 @@ const Navbar = () => {
   ];
 
   // WhatsApp handled via CTA link below using shared WA_NUMBER
+  const phoneNumber = (profile?.kontak?.phone || WA_NUMBER || "").replace(/\D/g, "").replace(/^0/, "62");
 
   return (
     <BSNavbar
@@ -51,7 +54,7 @@ const Navbar = () => {
             ))}
 
             <a
-              href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
+              href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(
                 "Halo, saya ingin mengetahui lebih lanjut tentang layanan Anda."
               )}`}
               target="_blank"

@@ -1,36 +1,35 @@
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { companyInfo } from "../data/company";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import "../styling/pages/Contact.css";
 import "../index.css";
 import { motion } from "framer-motion";
-import axios from "axios";
 import { useState } from "react";
+import { postPesan } from "../utils/publicApi";
+import useCompanyProfile from "../hooks/useCompanyProfile";
 
 function Contact() {
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [layanan, setLayanan] = useState("");
   const [isi, setIsi] = useState("");
+  const { profile } = useCompanyProfile();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://202.10.47.174:8000/api/pesan/add/", {
-        name_pesan: nama,
-        email_pesan: email,
-        layanan_pesan: layanan,
-        pesan_isi: isi,
-      })
-      .then((response) => {
+    postPesan({
+      name_pesan: nama,
+      email_pesan: email,
+      layanan_pesan: layanan,
+      pesan_isi: isi,
+    })
+      .then(() => {
         setNama("");
         setEmail("");
         setLayanan("");
         setIsi("");
-        console.log(response);
+        alert("Pesan berhasil dikirim!");
       })
       .catch((error) => {
-        alert("Gagal terkirim:", error);
-        // console.error("Gagal menyimpan data:", error);
+        alert("Gagal terkirim: " + (error.response?.data?.message || error.message));
       });
   };
 
@@ -75,7 +74,7 @@ function Contact() {
                 <Card.Body className="p-4">
                   <div className="ratio ratio-16x9 shadow-custom">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d569.3495873704287!2d106.95718165797548!3d-6.370698770623537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMjInMTMuOSJTIDEwNsKwNTcnMjYuNiJF!5e0!3m2!1sen!2sid!4v1764211390505!5m2!1sen!2sid"
+                      src={profile.kontak.mapsEmbed}
                       loading="lazy"
                       allowFullScreen
                       referrerPolicy="no-referrer-when-downgrade"
@@ -85,7 +84,7 @@ function Contact() {
                     <p>
                       <i className="bi bi-geo-alt fs-4 me-2 mt-1 text-gradient"></i>
                       <a href="https://maps.app.goo.gl/moAyGBTCi9TcRVs46">
-                        {companyInfo.kontak.address}
+                        {profile.kontak.address}
                       </a>
                     </p>
                   </div>
@@ -95,32 +94,32 @@ function Contact() {
                   <ul className="list-unstyled mb-0">
                     <li className="d-flex align-items-center justify-content-center mb-3">
                       <i className="bi bi-telephone me-2 mt-1 fs-5 text-gradient"></i>
-                      <a href={`tel:${companyInfo.kontak.phone}`}>
-                        0821-1472-6830
+                      <a href={`tel:${profile.kontak.phone}`}>
+                        {profile.kontak.phone}
                       </a>
                     </li>
                     <li className="d-flex align-items-center justify-content-center mb-3">
                       <i className="bi bi-instagram me-2 mt-1 fs-5 text-gradient"></i>
-                      <a href={companyInfo.sosial_media.instagram}>
+                      <a href={profile.sosial_media.instagram}>
                         ptmpn.official
                       </a>
                     </li>
                     <li className="d-flex align-items-center justify-content-center mb-3">
                       <i className="bi bi-youtube me-2 mt-1 fs-5 text-gradient"></i>
-                      <a href={companyInfo.sosial_media.youtube}>
+                      <a href={profile.sosial_media.youtube}>
                         Mitra Pelatihan Nasional
                       </a>
                     </li>
                     <li className="d-flex align-items-center justify-content-center mb-3">
                       <i className="bi bi-facebook me-2 mt-1 fs-5 text-gradient"></i>
-                      <a href={companyInfo.sosial_media.facebook}>
+                      <a href={profile.sosial_media.facebook}>
                         PT Multiartha Pundimas Nawasena
                       </a>
                     </li>
                     <li className="d-flex align-items-center justify-content-center mb-3">
                       <i className="bi bi-envelope-fill me-2 mt-1 fs-5 text-gradient"></i>
-                      <a href={`mailto:${companyInfo.kontak.email}`}>
-                        {companyInfo.kontak.email}
+                      <a href={`mailto:${profile.kontak.email}`}>
+                        {profile.kontak.email}
                       </a>
                     </li>
                   </ul>

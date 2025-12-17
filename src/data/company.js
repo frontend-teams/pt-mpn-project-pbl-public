@@ -1,9 +1,4 @@
-import axios from "axios";
-
-const API_BASE_URL = "http://202.10.47.174:8000/api";
-
-// Default fallback data
-const defaultCompanyInfo = {
+export const defaultCompanyInfo = {
   name: "PT MULTIARTHA PUNDIMAS NAWASENA",
   shortName: "MPN",
   tagline: "Pelatihan & Pengembangan SDM Profesional, Inovatif, dan Terpercaya",
@@ -60,24 +55,3 @@ const defaultCompanyInfo = {
   },
 };
 
-export let companyInfo = defaultCompanyInfo;
-
-// Fetch company data from backend
-export const fetchCompanyData = async () => {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/company-profile`);
-    if (response.data) {
-      companyInfo = { ...defaultCompanyInfo, ...response.data };
-    }
-    return companyInfo;
-  } catch (error) {
-    console.warn(
-      "Failed to fetch company data from backend, using default data:",
-      error
-    );
-    return defaultCompanyInfo;
-  }
-};
-
-// Initialize: fetch data when module loads
-fetchCompanyData();

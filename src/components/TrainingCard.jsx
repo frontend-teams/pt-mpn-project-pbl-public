@@ -16,9 +16,9 @@ const TrainingCard = ({ item, onOpen, index = 0 }) => {
         />
 
         <div className="card-body">
-          <h5 className="card-title fw-semibold">{item.title}</h5>
+          <h5 className="card-title fw-semibold">{item.title || item.nama || "Pelatihan"}</h5>
           <p className="card-text text-muted training-card-desc">
-            {item.desc}
+            {item.desc || item.description}
           </p>
 
           <button className="btn btn-link p-0" onClick={() => onOpen(item)}>

@@ -1,9 +1,4 @@
-import axios from "axios";
-
-const API_BASE_URL = "http://202.10.47.174:8000/api";
-
-// Default fallback data (keyed by jenis_bidang_usaha ID)
-const defaultDetailLayanan = {
+export const defaultDetailLayanan = {
   nonformal: {
     id: "nonformal",
     title: "Pelatihan & Pendidikan Nonformal",
@@ -30,7 +25,6 @@ const defaultDetailLayanan = {
       },
     ],
   },
-
   konsulmanj: {
     id: "konsulmanj",
     title: "Pengembangan SDM & Konsultansi Manajemen",
@@ -67,7 +61,6 @@ const defaultDetailLayanan = {
       },
     ],
   },
-
   keterampilan: {
     id: "keterampilan",
     title: "Pelatihan Keterampilan Kerja",
@@ -104,7 +97,6 @@ const defaultDetailLayanan = {
       },
     ],
   },
-
   eventorg: {
     id: "eventorg",
     title: "Event Organizer, Production House & Outbound",
@@ -142,7 +134,6 @@ const defaultDetailLayanan = {
       { id: 23, name: "Outbound", desc: "Team building & leadership camp." },
     ],
   },
-
   sertifikasi: {
     id: "sertifikasi",
     title: "Jasa Sertifikasi",
@@ -161,7 +152,6 @@ const defaultDetailLayanan = {
       },
     ],
   },
-
   manpower: {
     id: "manpower",
     title: "Penyediaan SDM (Manpower Supply)",
@@ -187,78 +177,3 @@ const defaultDetailLayanan = {
   },
 };
 
-export let detailLayanan = defaultDetailLayanan;
-
-/**
- * Fetch detail layanan from backend
- * Expected endpoint structure: /api/detail-jenis-bidang-usaha
- * Expects response to have items with fields:
- *   - id_bidang_usaha or jenis_bidang_usaha
- *   - nama_detail or title
- *   - deskripsi or description
- */
-export const fetchDetailLayananData = async () => {
-  try {
-    const response = await axios.get(
-      `${API_BASE_URL}/detail-jenis-bidang-usaha`
-    );
-    const data = response.data;
-
-    // Parse response (support array or paginated response)
-    const items = Array.isArray(data) ? data : data?.results || [];
-
-    if (items.length > 0) {
-      // Group items by jenis_bidang_usaha (ID atau slug)
-      const grouped = {};
-
-      items.forEach((item) => {
-        // Determine the bidang_usaha key (e.g., "nonformal", "konsulmanj")
-        const bidangKey =
-          item.jenis_bidang_usaha_slug ||
-          item.jenis_bidang_usaha ||
-          item.id_bidang_usaha_slug ||
-          null;
-
-        if (!bidangKey) {
-          console.warn("Item missing jenis_bidang_usaha identifier:", item);
-          return;
-        }
-
-        if (!grouped[bidangKey]) {
-          // Initialize group with title from item or default
-          grouped[bidangKey] = {
-            id: bidangKey,
-            title:
-              item.jenis_bidang_usaha_name ||
-              item.bidang_usaha_title ||
-              bidangKey,
-            items: [],
-          };
-        }
-
-        // Add detail item with flexible field mapping
-        grouped[bidangKey].items.push({
-          id: item.id,
-          name: item.nama_detail || item.title || item.name || "",
-          desc: item.deskripsi || item.description || item.desc || "",
-          // Additional fields from backend (preserve all)
-          ...item,
-        });
-      });
-
-      // Merge with defaults and update detailLayanan
-      detailLayanan = { ...defaultDetailLayanan, ...grouped };
-    }
-
-    return detailLayanan;
-  } catch (error) {
-    console.warn(
-      "Failed to fetch detail layanan from backend, using default data:",
-      error
-    );
-    return defaultDetailLayanan;
-  }
-};
-
-// Initialize: fetch data when module loads
-fetchDetailLayananData();

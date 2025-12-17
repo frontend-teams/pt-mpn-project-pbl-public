@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
@@ -6,19 +6,27 @@ import { Autoplay } from "swiper/modules";
 import clientA from "../assets/clients/kojic.png";
 import clientB from "../assets/clients/kolam_ikan.png";
 import clientC from "../assets/clients/tensani.png";
+import { fetchPartners } from "../utils/publicApi";
+import { resolveUploadUrl } from "../utils/imageUrl";
 
-const logos = [
-  clientA,
-  clientB,
-  clientC,
-  clientA,
-  clientB,
-  clientC,
-  clientA,
-  clientB,
-];
+const fallbackLogos = [clientA, clientB, clientC, clientA, clientB, clientC, clientA, clientB];
 
 const Clients = () => {
+  const [logos, setLogos] = useState(fallbackLogos);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetchPartners();
+        const mapped = (res || []).map((p) => resolveUploadUrl(p.logo));
+        if (mapped.filter(Boolean).length) setLogos(mapped.filter(Boolean));
+      } catch (error) {
+        console.warn("Gagal memuat partner, gunakan fallback", error);
+      }
+    };
+    load();
+  }, []);
+
   return (
     <section className="py-4">
       <div className="container text-center">

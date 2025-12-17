@@ -1,15 +1,17 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { companyInfo } from "../data/company";
 import { Link } from "react-router-dom";
 import "../styling/pages/Home.css";
 
 import Courses from "./Courses";
 import Services from "./Services";
 import usePageMeta from "../utils/usePageMeta";
+import useCompanyProfile from "../hooks/useCompanyProfile";
 
 /* carousel */
 import Clients from "./Clients";
 import Gallery from "./Gallery";
+import Testimonials from "./Testimonials";
+import { useState } from "react";
 
 // Import gambar hero
 import heroImage from "../assets/gallery/image4.jpeg";
@@ -22,6 +24,14 @@ function Home() {
     ogType: "website",
   });
 
+  const { profile } = useCompanyProfile();
+  const [refreshing, setRefreshing] = useState(false);
+
+  const handleRefresh = () => {
+    setRefreshing(true);
+    window.location.reload();
+  };
+
   return (
     <>
       <div>
@@ -30,10 +40,20 @@ function Home() {
           <Container>
             <Row className="align-items-center">
               <Col lg={6} className="fade-in">
+                <div className="d-flex justify-content-end mb-2">
+                  <Button
+                    variant="outline-light"
+                    size="sm"
+                    onClick={handleRefresh}
+                    disabled={refreshing}
+                  >
+                    {refreshing ? "Refreshing..." : "Refresh Data"}
+                  </Button>
+                </div>
                 <h1 className="hero-title">
-                  <span className="text-gradient">{companyInfo.name}</span>
+                  <span className="text-gradient">{profile.name}</span>
                 </h1>
-                <p className="hero-subtitle">{companyInfo.tagline}</p>
+                <p className="hero-subtitle">{profile.tagline}</p>
                 <div className="d-flex flex-column flex-sm-row gap-3">
                   <Button
                     as={Link}
@@ -73,6 +93,7 @@ function Home() {
         <Clients />
         <Courses />
         <Services />
+        <Testimonials />
         <Gallery />
       </>
     </>

@@ -1,12 +1,13 @@
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import "../styling/pages/About.css";
 import "../index.css";
 import CTASection from "../components/CTASection";
-import { companyInfo } from "../data/company";
 import heroImage from "../assets/gallery/image6.jpeg";
+import useCompanyProfile from "../hooks/useCompanyProfile";
 
 function About() {
-  
+  const { profile } = useCompanyProfile();
+
   return (
     <div>
       {/* Hero Section */}
@@ -17,7 +18,7 @@ function About() {
               Tentang Kami
             </h1>
             <p className="fs-5 text-muted">
-              Mengenal lebih dekat {companyInfo.name}
+              Mengenal lebih dekat {profile.name}
             </p>
           </div>
         </Container>
@@ -36,7 +37,7 @@ function About() {
             </Col>
             <Col lg={6} className="fade-in">
               <h2 className="display-6 fw-bold mb-4">Profil Perusahaan</h2>
-              <p className="text-muted mb-4">{companyInfo.about}</p>
+              <p className="text-muted mb-4">{profile.about}</p>
             </Col>
           </Row>
         </Container>
@@ -53,7 +54,7 @@ function About() {
                     <i className="bi bi-bullseye fs-4 text-gradient"></i>
                   </div>
                   <h3 className="h4 fw-bold mb-3">Visi Kami</h3>
-                  <p className="text-muted fs-5">{companyInfo.visi}</p>
+                  <p className="text-muted fs-5">{profile.visi}</p>
                 </Card.Body>
               </Card>
             </Col>
@@ -66,7 +67,7 @@ function About() {
                   </div>
                   <h3 className="h4 fw-bold mb-3">Misi Kami</h3>
                   <ul className="list-unstyled mb-0">
-                    {companyInfo.misi.map((item, index) => (
+                    {profile.misi.map((item, index) => (
                       <li
                         key={index}
                         className="d-flex align-items-center mb-3"
@@ -89,13 +90,13 @@ function About() {
           <div className="text-center mb-5 fade-in">
             <h2 className="section-title">Keunggulan Kami</h2>
             <p className="section-subtitle">
-              Mengapa memilih {companyInfo.name} sebagai partner pengembangan
+              Mengapa memilih {profile.name} sebagai partner pengembangan
               SDM Anda
             </p>
           </div>
 
           <Row className="g-4 justify-content-start">
-            {companyInfo.keunggulan.map((item, index) => {
+            {profile.keunggulan.map((item, index) => {
               return (
                 <Col md={6} lg={3} key={index} className="fade-in">
                   <Card className={`card-custom shadow-sm h-100 p-4`}>
@@ -126,7 +127,7 @@ function About() {
               <Card className="card-custom shadow-sm">
                 <Card.Body className="p-4">
                   <ul className="list-unstyled mb-0">
-                    {companyInfo.legalitas.map((item, index) => (
+                    {profile.legalitas.map((item, index) => (
                       <li key={index} className="d-flex align-items-start mb-3">
                         <i className="bi bi-check-circle-fill text-primary me-3 mt-1 shrink-0"></i>
                         <span className="text-muted">{item}</span>
@@ -147,14 +148,14 @@ function About() {
             <Col lg={5} className="fade-in">
               <div className="d-flex align-items-center mb-3">
                 <i className="bi bi-pin-map-fill me-2 fs-4"></i>
-                <span className="fw-bold fs-5">{companyInfo.name}</span>
+                <span className="fw-bold fs-5">{profile.name}</span>
               </div>
-              <p className="text-muted">{companyInfo.kontak.address}</p>
+              <p className="text-muted">{profile.kontak.address}</p>
             </Col>
             <Col lg={5} className="fade-in">
               <div className="ratio ratio-16x9 shadow-custom">
                 <iframe
-                  src={companyInfo.kontak.mapsEmbed}
+                  src={profile.kontak.mapsEmbed}
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"

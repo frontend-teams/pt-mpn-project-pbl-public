@@ -22,3 +22,25 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# deps & build
+node_modules/
+dist/
+.vite/
+*.log
+
+# env
+.env
+.env.local
+.env.*.local
+
+# archives
+src.zip
+
+# tools outputs
+tools/cookie.txt
+tools/*contract*.md
+tools/*contract*.json
+tools/*contract*.tsv
+tools/users_admin_contract.md
+tools/users_admin_contract.tsv

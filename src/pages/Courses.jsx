@@ -1,63 +1,33 @@
-import React from "react";
-import { FaClock, FaLaptop, FaCalendar } from "react-icons/fa";
-
-import img1 from "../assets/courses/digital_marketing.jpg";
-import img2 from "../assets/courses/business_consulting.jpg";
-import img3 from "../assets/courses/lead_generation.jpg";
-import img4 from "../assets/courses/pelatihan-digital.jpeg";
-
-const courses = [
-  {
-    title: "Pelatihan Soft Skill",
-    days: "2 Hari",
-    type: "Online",
-    description:
-      "Pelatihan Soft Skill dirancang untuk meningkatkan kemampuan non-teknis yang sangat dibutuhkan dalam dunia kerja modern.",
-    image: img1,
-  },
-  {
-    title: "Pelatihan Administrasi Perkantoran",
-    days: "2 Hari",
-    type: "Online",
-    description:
-      "Pelatihan ini memberikan keterampilan praktis yang dibutuhkan staf administrasi dan perkantoran agar dapat bekerja secara efisien dan profesional.",
-    image: img2,
-  },
-  {
-    title: "Pelatihan Kewirausahaan & UMKM",
-    days: "4 Hari",
-    type: "Offline",
-    description:
-      "Pelatihan Kewirausahaan & UMKM ditujukan untuk membekali peserta dengan kemampuan merencanakan, mengelola, dan mengembangkan usaha secara berkelanjutan.",
-    image: img3,
-  },
-  {
-    title: "Pelatihan Digital",
-    days: "1 Hari",
-    type: "Online",
-    description:
-      "Pelatihan Digital berfokus pada peningkatan kompetensi teknologi peserta agar mampu beradaptasi dengan kebutuhan dunia kerja yang serba digital.",
-    image: img4,
-  },
-  {
-    title: "Pelatihan Operator Alat Berat",
-    days: "2 Hari",
-    type: "Offline",
-    description:
-      "Pelatihan Operator Alat Berat dirancang untuk membekali peserta dengan keterampilan teknis dan pengetahuan keselamatan dalam mengoperasikan berbagai jenis alat berat.",
-    image: img2,
-  },
-  {
-    title: "Pelatihan Welding (SMAW, MIG, TIG)",
-    days: "2 Hari",
-    type: "Offline",
-    description:
-      "Pelatihan ini memberikan keterampilan praktis pengelasan untuk berbagai metode seperti SMAW, MIG, dan TIG.",
-    image: img3,
-  },
-];
+import React, { useEffect, useState } from "react";
+import { FaLaptop } from "react-icons/fa";
+import { fetchJenisUsaha } from "../utils/publicApi";
+import { resolveUploadUrl } from "../utils/imageUrl";
+import trainings from "../data/training";
 
 const Courses = () => {
+  const [courses, setCourses] = useState(trainings);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetchJenisUsaha();
+        if (res && res.length) {
+          const mapped = res.map((item) => ({
+            id: item.id,
+            title: item.nama_jenis,
+            type: item.status || "Aktif",
+            description: item.deskripsi,
+            image: resolveUploadUrl(item.foto),
+          }));
+          setCourses(mapped);
+        }
+      } catch (error) {
+        console.warn("Gagal memuat jenis usaha, gunakan fallback", error);
+      }
+    };
+    load();
+  }, []);
+
   return (
     <section className="courses-section py-5">
       <div className="container text-center">
@@ -71,7 +41,7 @@ const Courses = () => {
 
         <div className="row g-4">
           {courses.map((course, index) => (
-            <div className="col-md-4" key={index}>
+            <div className="col-md-4" key={course.id || index}>
               <div className="course-card shadow-sm">
                 <img
                   src={course.image}
@@ -90,12 +60,12 @@ const Courses = () => {
                       <FaClock className="me-1" /> {course.days}
                     </span> */}
                     <span>
-                      <FaLaptop className="me-1" /> {course.type}
+                      <FaLaptop className="me-1" /> {course.type || "Pelatihan"}
                     </span>
                   </div>
 
                   <p className="mt-2 small text-dark opacity-75">
-                    {course.description}
+                    {course.description || course.desc}
                   </p>
                 </div>
               </div>

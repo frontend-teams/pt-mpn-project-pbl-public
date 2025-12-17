@@ -1,13 +1,19 @@
 import React from "react";
 import icon1 from "../assets/icons/services_logo.png";
-const services = [
+import { useBidangUsaha } from "../hooks/useBidangUsaha";
+import { resolveUploadUrl } from "../utils/imageUrl";
+
+const fallbackServices = [
   { icon: icon1, title: "Pelatihan & Pendidikan Nonformal" },
   { icon: icon1, title: "Pengembangan SDM & Konsultansi Manajemen" },
   { icon: icon1, title: "Pelatihan Keterampilan Kerja" },
   { icon: icon1, title: "Jasa Sertifikasi" },
   { icon: icon1, title: "Penyediaan SDM (Manpower Supply)" },
 ];
+
 const Services = () => {
+  const { data: layanan } = useBidangUsaha();
+  const list = (layanan.length ? layanan : fallbackServices).slice(0, 8);
   return (
     <section
       className="py-5"
@@ -24,7 +30,7 @@ const Services = () => {
           Pelatihan & Pengembangan SDM untuk Perusahaan
         </p>
         <div className="row justify-content-center g-3 g-md-4">
-          {services.map((service, i) => (
+          {list.map((service, i) => (
             <div className="col-6 col-sm-4 col-md-3 col-lg-2" key={i}>
               <div
                 className="p-4 rounded-4 d-flex flex-column align-items-center justify-content-center gap-3"
@@ -48,14 +54,14 @@ const Services = () => {
                 }}
               >
                 <img
-                  src={service.icon}
+                  src={resolveUploadUrl(service.poto) || service.icon || icon1}
                   width="100"
                   height="100"
                   alt="icon"
                   loading="lazy"
                 />
                 <p className="fw-semibold text-white text-center mb-0">
-                  {service.title}
+                  {service.nama_BUsaha || service.title}
                 </p>
               </div>
             </div>

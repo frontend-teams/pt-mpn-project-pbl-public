@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import trainings from "../data/training";
 import TrainingCard from "../components/TrainingCard";
 import TrainingDetail from "./TrainingDetail";
 import "../styling/pages/Training.css";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import "../index.css";
 import usePageMeta from "../utils/usePageMeta";
+import { fetchJenisUsaha, fetchBidangUsaha } from "../utils/publicApi";
+import { resolveUploadUrl } from "../utils/imageUrl";
 
 const Training = () => {
   usePageMeta({
@@ -17,6 +19,8 @@ const Training = () => {
   const [selectedTraining, setSelectedTraining] = useState(null);
   const [show, setShow] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [data, setData] = useState(trainings);
+  const [bidangMap, setBidangMap] = useState({});
 
   const openModal = (item) => {
     setSelectedTraining(item);
@@ -27,6 +31,38 @@ const Training = () => {
     setShow(false);
     setSelectedTraining(null);
   };
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const [jenisRes, bidangRes] = await Promise.all([
+          fetchJenisUsaha(),
+          fetchBidangUsaha(),
+        ]);
+
+        const bidangDict = {};
+        (bidangRes || []).forEach((b) => {
+          const id = b.id_BUsaha || b.id;
+          if (id) bidangDict[id] = b.nama_BUsaha;
+        });
+        setBidangMap(bidangDict);
+
+        if (jenisRes && jenisRes.length) {
+          const mapped = jenisRes.map((item) => ({
+            id: item.id,
+            title: item.nama_jenis,
+            desc: item.deskripsi,
+            image: resolveUploadUrl(item.foto),
+            bidangUsahaId: item.bidangUsahaId,
+          }));
+          setData(mapped);
+        }
+      } catch (error) {
+        console.warn("Gagal memuat jenis usaha, gunakan data fallback", error);
+      }
+    };
+    load();
+  }, []);
 
   useEffect(() => {
     // Memastikan scroll restoration diatur ke manual
@@ -47,6 +83,17 @@ const Training = () => {
       }
     };
   }, []);
+
+  const grouped = useMemo(() => {
+    const groups = {};
+    (data || []).forEach((item) => {
+      const key = item.bidangUsahaId || "lainnya";
+      const title = bidangMap[key] || "Program Lainnya";
+      if (!groups[key]) groups[key] = { title, items: [] };
+      groups[key].items.push(item);
+    });
+    return Object.entries(groups);
+  }, [data, bidangMap]);
 
   return (
     <div
@@ -70,50 +117,27 @@ const Training = () => {
       </section>
 
       <section className="section-padding bg-light">
-        <div className="mb-4">
-          <h2 className="section-title">Pelatihan dan Pendidikan Non Formal</h2>
-        </div>
-        <Container>
-          <Row className="g-4">
-            <Col lg={12} className="fade-in">
-              <div className="row g-4 training-row">
-                {trainings
-                  .filter((t) => t.category === "non-formal")
-                  .map((item, idx) => (
+        {grouped.map(([key, group], groupIdx) => (
+          <Container key={key}>
+            <div className="mb-4 mt-4">
+              <h2 className="section-title">{group.title}</h2>
+            </div>
+            <Row className="g-4">
+              <Col lg={12} className="fade-in">
+                <div className="row g-4 training-row">
+                  {group.items.map((item, idx) => (
                     <TrainingCard
-                      key={item.id}
+                      key={item.id || idx}
                       item={item}
                       onOpen={openModal}
-                      index={idx}
+                      index={groupIdx * 10 + idx}
                     />
                   ))}
-              </div>
-            </Col>
-          </Row>
-        </Container>
-
-        <div className="mt-5 mb-4 pt-5">
-          <h2 className="section-title">Pelatihan Keterampilan Kerja</h2>
-        </div>
-
-        <Container>
-          <Row className="g-4">
-            <Col lg={12} className="fade-in">
-              <div className="row g-4 training-row">
-                {trainings
-                  .filter((t) => t.category === "keterampilan-kerja")
-                  .map((item, idx) => (
-                    <TrainingCard
-                      key={item.id}
-                      item={item}
-                      onOpen={openModal}
-                      index={idx}
-                    />
-                  ))}
-              </div>
-            </Col>
-          </Row>
-        </Container>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        ))}
 
         <TrainingDetail
           show={show}

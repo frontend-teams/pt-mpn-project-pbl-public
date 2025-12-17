@@ -25,7 +25,7 @@ const TrainingDetailModal = ({ show, onClose, data }) => {
           alt={data.title}
           className="img-fluid rounded mb-3"
         />
-        <p>{data.desc}</p>
+        <p>{data.desc || data.description}</p>
 
         {data.jenisPelatihan && data.jenisPelatihan.length > 0 && (
           <div className="mt-4">
