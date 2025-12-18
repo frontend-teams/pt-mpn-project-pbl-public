@@ -22,7 +22,11 @@ const Clients = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>; // Menampilkan loading jika data belum tersedia
+    return (
+      <section className="courses-section py-5 text-center">
+        <div className="spinner-border text-primary" />
+      </section>
+    );
   }
 
   return (

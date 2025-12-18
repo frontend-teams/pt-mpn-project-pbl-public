@@ -2,6 +2,8 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { companyInfo } from "../data/company";
 import { Link } from "react-router-dom";
 import "../styling/pages/Home.css";
+import CTASection from "../components/CTASection";
+import "../styling/components/CTASection.css";
 
 import Courses from "./Courses";
 import Services from "./Services";
@@ -43,16 +45,7 @@ function Home() {
                   >
                     Lihat Pelatihan <i className="bi bi-arrow-right ms-2"></i>
                   </Button>
-                  <Button
-                    as={Link}
-                    to="/contact"
-                    size="lg"
-                    className="custom-button"
-                  >
-                    <div className="d-flex gap-2 justify-content-center">
-                      <i className="bi bi-whatsapp"></i>Hubungi Admin Kami
-                    </div>
-                  </Button>
+                  
                 </div>
               </Col>
               <Col lg={6} className="d-none d-lg-block fade-in">
@@ -74,6 +67,7 @@ function Home() {
         <Courses />
         <Services />
         <Gallery />
+        <CTASection />
       </>
     </>
   );

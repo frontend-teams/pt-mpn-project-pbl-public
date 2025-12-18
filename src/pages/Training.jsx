@@ -1,114 +1,83 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import TrainingCard from "../components/TrainingCard";
 import TrainingDetail from "./TrainingDetail";
 import { fetchJenisUsaha } from "../utils/jenisUsahaApi";
 import API_BASE_URL from "../utils/apiConfig";
-import { Container, Row } from "react-bootstrap";
 import "../styling/pages/Training.css";
 import "../index.css";
 import usePageMeta from "../utils/usePageMeta";
 
 const Training = ({ limit = null }) => {
   usePageMeta({
-    title: "Program Pelatihan PT MPN — Nonformal & Keterampilan Kerja",
-    description:
-      "Pilih berbagai program pelatihan nonformal dan keterampilan kerja",
-    ogType: "website",
+    title: "Program Pelatihan PT MPN",
+    description: "Berbagai program pelatihan dan keterampilan kerja",
   });
 
   const [programs, setPrograms] = useState([]);
   const [groupedPrograms, setGroupedPrograms] = useState({});
   const [loading, setLoading] = useState(true);
-  const [selectedTraining, setSelectedTraining] = useState(null);
-  const [show, setShow] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
-  // ======================================
-  // Fetch data pelatihan
-  // ======================================
+  // =========================
+  // Fetch data
+  // =========================
   const getData = useCallback(async () => {
-    try {
-      setLoading(true);
-      const data = await fetchJenisUsaha(limit); // Ambil data, bisa batasi limit
-      setPrograms(data || []);
-    } catch (error) {
-      console.error("Gagal fetch program:", error);
-    } finally {
-      setLoading(false);
-    }
+    setLoading(true);
+    const data = await fetchJenisUsaha(limit);
+    setPrograms(data || []);
+    setLoading(false);
   }, [limit]);
 
-  // ======================================
-  // Initial load
-  // ======================================
   useEffect(() => {
     getData();
-    const t = setTimeout(() => setMounted(true), 100);
-    return () => clearTimeout(t);
   }, [getData]);
 
-  // ======================================
-  // Grouping data berdasarkan bidang usaha
-  // ======================================
+  // =========================
+  // Group by bidang usaha
+  // =========================
   useEffect(() => {
     const grouped = programs.reduce((acc, item) => {
-      const field = item.bidang_usaha?.nama_BUsaha || "Lainnya";
-      if (!acc[field]) acc[field] = [];
-      acc[field].push(item);
+      const key = item.bidang_usaha?.nama_BUsaha || "Lainnya";
+      if (!acc[key]) acc[key] = [];
+      acc[key].push(item);
       return acc;
     }, {});
     setGroupedPrograms(grouped);
   }, [programs]);
 
-  const openModal = (item) => {
-    setSelectedTraining({ ...item });
-    setShow(true);
-  };
-
-  const closeModal = () => {
-    setShow(false);
-    setSelectedTraining(null);
-  };
-
-  // ======================================
-  // Render
-  // ======================================
   return (
-    <div
-      className={
-        mounted
-          ? "training-slide-up-enter training-fade-enter"
-          : "training-slide-up-init training-fade-init"
-      }
-    >
+    <div>
+      {/* ================= HERO ================= */}
       <section className="hero-section">
         <Container>
-          <header className="title-section py-4 text-center">
-            <h1 className="display-4 fw-bold text-gradient">
-              Program Pelatihan
+          <div className="text-center fade-in">
+            <h1 className="display-4 fw-bold mb-4">
+              Program <span className="text-gradient">Pelatihan</span>
             </h1>
             <p className="fs-5 text-muted">
-              Tingkatkan skill kamu melalui berbagai pelatihan terbaik kami
+              Tingkatkan keterampilan melalui program pelatihan terbaik kami
             </p>
-          </header>
+          </div>
         </Container>
       </section>
 
+      {/* ================= CONTENT ================= */}
       <section className="section-padding bg-light">
-        {loading ? (
-          <div className="text-center py-5">
-            <div className="spinner-border text-primary" />
-          </div>
-        ) : (
-          <Container>
-            {Object.keys(groupedPrograms).length > 0 ? (
-              Object.keys(groupedPrograms).map((field) => (
-                <div key={field} className="mb-5">
-                  <h3 className="section-title">{field}</h3>
-                  <Row className="g-4">
-                    {groupedPrograms[field].map((item, idx) => (
+        <Container>
+          {loading ? (
+            <div className="text-center py-5">
+              <div className="spinner-border text-primary" />
+            </div>
+          ) : (
+            Object.keys(groupedPrograms).map((field) => (
+              <div key={field} className="mb-5">
+                {/* Section title seperti Services */}
+                <h2 className="section-title mb-4">{field}</h2>
+
+                <Row className="g-4">
+                  {groupedPrograms[field].map((item) => (
+                    <Col key={item.id} md={6} lg={4} className="fade-in">
                       <TrainingCard
-                        key={item.id}
                         item={{
                           id: item.id,
                           title: item.nama_jenis,
@@ -116,26 +85,15 @@ const Training = ({ limit = null }) => {
                           image: item.foto
                             ? `${API_BASE_URL}/uploads/${item.foto}`
                             : "/default-training.jpg",
-                          category: item.bidang_usaha,
                         }}
-                        onOpen={() => openModal(item)}
-                        index={idx}
                       />
-                    ))}
-                  </Row>
-                </div>
-              ))
-            ) : (
-              <p className="text-center">Tidak ada data pelatihan tersedia.</p>
-            )}
-          </Container>
-        )}
-
-        <TrainingDetail
-          show={show}
-          onClose={closeModal}
-          data={selectedTraining}
-        />
+                    </Col>
+                  ))}
+                </Row>
+              </div>
+            ))
+          )}
+        </Container>
       </section>
     </div>
   );

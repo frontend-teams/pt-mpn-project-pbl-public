@@ -10,25 +10,33 @@ import { useEffect, useState } from "react";
 const Footer = () => {
   const [companyInfo, setCompanyInfo] = useState(null);
   const [services, setServices] = useState([]); // State untuk menyimpan data layanan
+  const [loading, setLoading] = useState(true); // State untuk loading
 
   // Mengambil data company profile dan layanan
   useEffect(() => {
-    const getCompanyInfo = async () => {
-      const data = await fetchCompanyProfile(); // Mengambil data profile perusahaan
-      setCompanyInfo(data);
+    const getData = async () => {
+      try {
+        const companyData = await fetchCompanyProfile();
+        const servicesData = await fetchServices(6); // Ambil data layanan dengan limit 6
+
+        setCompanyInfo(companyData);
+        setServices(servicesData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Set loading false setelah data diterima atau error
+      }
     };
 
-    const getServices = async () => {
-      const data = await fetchServices(); // Mengambil data layanan
-      setServices(data);
-    };
-
-    getCompanyInfo();
-    getServices();
+    getData();
   }, []);
 
-  if (!companyInfo || services.length === 0) {
+  if (loading) {
     return <div>Loading...</div>; // Menampilkan loading sementara data diambil
+  }
+
+  if (!companyInfo || services.length === 0) {
+    return <div>Data tidak tersedia.</div>; // Menampilkan pesan jika data tidak ditemukan
   }
 
   return (
@@ -40,16 +48,32 @@ const Footer = () => {
             <h2>PT. MPN</h2>
             <p className="text-white-50 mb-4">{companyInfo.tagline}</p>
             <div className="d-flex gap-3">
-              <a href={companyInfo.sosial_media.facebook} target="_blank" rel="noopener noreferrer">
+              <a
+                href={companyInfo.sosial_media.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="bi bi-facebook fs-5"></i>
               </a>
-              <a href={companyInfo.sosial_media.instagram} target="_blank" rel="noopener noreferrer">
+              <a
+                href={companyInfo.sosial_media.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="bi bi-instagram fs-5"></i>
               </a>
-              <a href={companyInfo.sosial_media.linkedin} target="_blank" rel="noopener noreferrer">
+              <a
+                href={companyInfo.sosial_media.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="bi bi-linkedin fs-5"></i>
               </a>
-              <a href={companyInfo.sosial_media.youtube} target="_blank" rel="noopener noreferrer">
+              <a
+                href={companyInfo.sosial_media.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="bi bi-youtube fs-5"></i>
               </a>
             </div>
