@@ -3,8 +3,8 @@ import "../styling/pages/Services.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../index.css";
-import { fetchServices } from "../utils/servicesApi";
-import API_BASE_URL from "../utils/apiConfig";
+import { fetchServices } from "../api/servicesApi";
+import API_BASE_URL from "../api/apiConfig";
 
 export default function Services() {
   const [services, setServices] = useState([]);

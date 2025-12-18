@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-import API_BASE_URL from "../utils/apiConfig"; // Import API_BASE_URL
+import API_BASE_URL from "../api/apiConfig"; // Import API_BASE_URL
 
-import { fetchPartners } from "../utils/partnersApi"; // panggil fungsi fetch API
+import { fetchPartners } from "../api/partnersApi"; // panggil fungsi fetch API
 
 const Clients = () => {
   const [partners, setPartners] = useState([]);
