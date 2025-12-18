@@ -41,19 +41,20 @@ export default function CardServices() {
   };
 
   // ===============================
-  // Handler hubungi
+  // Handler tutup modal
   // ===============================
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedService(null);
   };
 
+  // ===============================
+  // Handler hubungi via WhatsApp
+  // ===============================
   const handleWhatsApp = () => {
     if (!selectedService) return;
     const message = `Halo, saya ingin mendaftar untuk layanan "${selectedService.nama_BUsaha}".`;
-    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
-      message
-    )}`;
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
@@ -80,6 +81,10 @@ export default function CardServices() {
             <div className="text-center py-5">
               <div className="spinner-border text-primary" />
             </div>
+          ) : services.length === 0 ? (
+            <div className="text-center py-5">
+              <p className="text-muted">Tidak ada layanan yang tersedia saat ini.</p>
+            </div>
           ) : (
             <Row className="g-4 justify-content-center">
               {services.map((item) => (
@@ -91,7 +96,7 @@ export default function CardServices() {
                           ? `${API_BASE_URL}/${item.poto}`
                           : "/default-service.jpg"
                       }
-                      alt={item.nama_BUsaha}
+                      alt={item.nama_BUsaha || "Layanan Image"}
                       className="img-fluid rounded mb-3"
                     />
 
@@ -117,9 +122,7 @@ export default function CardServices() {
         </Container>
       </section>
 
-      {/* ===============================
-          MODAL DETAIL LAYANAN
-      =============================== */}
+      {/* Modal Detail Layanan */}
       <Modal show={showModal} onHide={handleCloseModal} centered size="lg">
         <Modal.Header closeButton>
           <Modal.Title>{selectedService?.nama_BUsaha}</Modal.Title>
@@ -134,7 +137,7 @@ export default function CardServices() {
                     ? `${API_BASE_URL}/${selectedService.poto}`
                     : "/default-service.jpg"
                 }
-                alt={selectedService.nama_BUsaha}
+                alt={selectedService.nama_BUsaha || "Service Image"}
                 className="img-fluid rounded mb-3"
               />
 

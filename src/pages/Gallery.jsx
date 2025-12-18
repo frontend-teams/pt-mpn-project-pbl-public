@@ -4,6 +4,8 @@ import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import { fetchGallery } from "../utils/galleryApi"; // panggil fungsi fetch API
 import API_BASE_URL from "../utils/apiConfig"; // Import API_BASE_URL
+import "../index.css";  // Mengimpor index.css untuk menggunakan variabel dan style global
+import { Container } from "react-bootstrap";
 
 const Gallery = () => {
   const [gallery, setGallery] = useState([]);
@@ -30,7 +32,7 @@ const Gallery = () => {
   }
 
   return (
-    <section className="py-5 overflow-hidden">
+    <section className="section-padding">
       <h1 className="display-4 fw-bold text-gradient pb-1 mb-2 text-center">
         Galeri Kami
       </h1>
@@ -38,8 +40,9 @@ const Gallery = () => {
         Jelajahi momen-momen berharga dari berbagai pelatihan dan kegiatan kami
       </p>
 
-      <div className="fade-edges-wrapper w-100" style={{ height: "441px" }}>
-        <Swiper
+      <div style={{ height: "441px" }}>
+        <Container>
+          <Swiper
           modules={[Autoplay]}
           spaceBetween={20}
           slidesPerView={"auto"}
@@ -73,6 +76,7 @@ const Gallery = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+        </Container>
       </div>
     </section>
   );

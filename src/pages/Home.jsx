@@ -2,6 +2,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { companyInfo } from "../data/company";
 import { Link } from "react-router-dom";
 import "../styling/pages/Home.css";
+import CTASection from "../components/CTASection";
 
 import Courses from "./Courses";
 import Services from "./Services";
@@ -74,6 +75,7 @@ function Home() {
         <Courses />
         <Services />
         <Gallery />
+        <CTASection />
       </>
     </>
   );
