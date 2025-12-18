@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { FaLaptop } from "react-icons/fa";
 import { fetchJenisUsaha } from "../utils/jenisUsahaApi";
+import { Link } from "react-router-dom"; // Import Link dari react-router-dom
 import API_BASE_URL from "../utils/apiConfig";
+import { Button } from "react-bootstrap";
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
@@ -44,39 +46,43 @@ const Courses = () => {
         <div className="row g-4">
           {courses.map((course) => (
             <div className="col-md-4" key={course.id}>
-              <div className="course-card shadow-sm">
-                <img
-                  src={
-                    course.foto
-                      ? `${API_BASE_URL}/uploads/${course.foto}`
-                      : "/default-training.jpg"
-                  }
-                  className="img-fluid course-img"
-                  alt={course.nama_jenis}
-                  loading="lazy"
-                  width="600"
-                  height="160"
-                />
+              {/* Membungkus card dengan Link agar bisa diklik */}
+              <Link
+                to={`/training/${course.id}`} // Arahkan ke halaman detail pelatihan
+                className="text-decoration-none" // Menghilangkan garis bawah pada link
+              >
+                <div className="course-card shadow-sm">
+                  <img
+                    src={
+                      course.foto
+                        ? `${API_BASE_URL}/uploads/${course.foto}`
+                        : "/default-training.jpg"
+                    }
+                    className="img-fluid course-img"
+                    alt={course.nama_jenis}
+                    loading="lazy"
+                    width="600"
+                    height="160"
+                  />
 
-                <div className="course-content p-3 text-black text-start">
-                  <h5 className="fw-semibold">{course.nama_jenis}</h5>
-                  <p className="mt-2 small text-dark opacity-75">
-                    {course.deskripsi}
-                  </p>
+                  <div className="course-content p-3 text-black text-start">
+                    <h5 className="fw-semibold">{course.nama_jenis}</h5>
+                    <p className="mt-2 small text-dark opacity-75">
+                      {course.deskripsi}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         </div>
 
-        <button className="btn btn-primary mt-4 px-4 rounded-3 more-btn">
-          <a
-            href="/training"
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            Lihat lebih banyak ...
-          </a>
-        </button>
+        {/* Tombol "Lihat Lebih Banyak" */}
+        <div className="text-center mt-5">
+          <Button as={Link} to="/training" variant="outline-primary">
+            Lihat Lebih Banyak Pelatihan
+          </Button>
+        </div>
       </div>
     </section>
   );

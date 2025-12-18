@@ -56,7 +56,7 @@ const Navbar = () => {
               )}`}
               target="_blank"
               rel="noopener"
-              className="btn btn-primary-custom ms-lg-3"
+              className="btn btn-primary-custom ms-lg-3 mt-3 mt-lg-0"
               onClick={() => setMenuOpen(false)}
             >
               <div className="d-flex gap-2">

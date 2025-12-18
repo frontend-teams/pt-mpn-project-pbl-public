@@ -12,7 +12,6 @@ function CTASection() {
     .replace(/\D/g, "") // hapus selain angka
     .replace(/^0/, "62"); // ganti 0 di awal jadi 62
   console.log(normalizePhone);
-  
 
   const whatsappMessage =
     "Halo Admin, saya ingin bertanya mengenai program pelatihan.";
@@ -42,18 +41,18 @@ function CTASection() {
                     href={whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    size="md"
-                    className="cta-btn"
+                    size="lg"
+                    className="cta-btn-primary"
                   >
-                    <i className="bi bi-whatsapp"></i> Hubungi Admin Kami
+                    <i className="bi bi-whatsapp me-2"></i>
+                    Hubungi Admin Kami
                   </Button>
 
                   <Button
                     as={Link}
                     to="/training"
-                    variant="outline-light"
-                    size="md"
-                    className="cta-btn-outline"
+                    size="lg"
+                    className="cta-btn-secondary"
                   >
                     Lihat Program Pelatihan
                   </Button>
