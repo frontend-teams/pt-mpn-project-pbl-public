@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
-import API_BASE_URL from "../utils/apiConfig";
+import API_BASE_URL from "../api/apiConfig";
 import { WA_NUMBER } from "../data/training";
 import "../index.css";
 import "../styling/components/CTASection.css";

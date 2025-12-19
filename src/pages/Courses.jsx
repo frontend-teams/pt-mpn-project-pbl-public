@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { FaLaptop } from "react-icons/fa";
-import { fetchJenisUsaha } from "../utils/jenisUsahaApi";
+import { fetchJenisUsaha } from "../api/jenisUsahaApi";
 import { Link } from "react-router-dom"; // Import Link dari react-router-dom
-import API_BASE_URL from "../utils/apiConfig";
+import API_BASE_URL from "../api/apiConfig";
 import { Button } from "react-bootstrap";
 
 const Courses = () => {

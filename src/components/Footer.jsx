@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-import { fetchCompanyProfile } from "../utils/companyApi";
-import { fetchServices } from "../utils/servicesApi"; // Mengimpor fetchServices
+import { fetchCompanyProfile } from "../api/companyApi";
+import { fetchServices } from "../api/servicesApi"; // Mengimpor fetchServices
 import logo from "../assets/logo-mpn.svg";
 import "../index.css";
 import "../styling/components/Footer.css";

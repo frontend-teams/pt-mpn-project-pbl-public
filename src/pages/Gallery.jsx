@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-import { fetchGallery } from "../utils/galleryApi"; // panggil fungsi fetch API
-import API_BASE_URL from "../utils/apiConfig"; // Import API_BASE_URL
+import { fetchGallery } from "../api/galleryApi"; // panggil fungsi fetch API
+import API_BASE_URL from "../api/apiConfig"; // Import API_BASE_URL
 import "../index.css";  // Mengimpor index.css untuk menggunakan variabel dan style global
 import { Container } from "react-bootstrap";
 
