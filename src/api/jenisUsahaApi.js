@@ -26,3 +26,19 @@ export const fetchJenisUsaha = async (limit = null) => {
   }
 };
 
+// ambil detail jenis usaha per id
+export const fetchJenisUsahaById = async (id) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/jenis-usaha/${id}`);
+    if (!response.ok) {
+      throw new Error('Gagal mengambil detail pelatihan');
+    }
+
+    const result = await response.json();
+    return result.data || null;
+  } catch (error) {
+    console.error('Error fetching detail pelatihan:', error);
+    return null;
+  }
+};
+

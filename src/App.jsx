@@ -10,10 +10,12 @@ import Training from "./pages/Training";
 import TrainingDetail from "./pages/TrainingDetail";
 import OurTeam from "./pages/OurTeam";
 import ServiceDetail from "./pages/ServiceDetail";
+import ScrollToTop from "./utils/ScrollToTop";
 function App() {
   return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

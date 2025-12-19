@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import TrainingCard from "../components/TrainingCard";
 import TrainingDetail from "./TrainingDetail";
@@ -14,36 +14,28 @@ const Training = ({ limit = null }) => {
     description: "Berbagai program pelatihan dan keterampilan kerja",
   });
 
-  const [programs, setPrograms] = useState([]);
   const [groupedPrograms, setGroupedPrograms] = useState({});
   const [loading, setLoading] = useState(true);
 
   // =========================
-  // Fetch data
+  // Fetch data and group by bidang usaha
   // =========================
-  const getData = useCallback(async () => {
-    setLoading(true);
-    const data = await fetchJenisUsaha(limit);
-    setPrograms(data || []);
-    setLoading(false);
-  }, [limit]);
-
   useEffect(() => {
+    const getData = async () => {
+      setLoading(true);
+      const data = await fetchJenisUsaha(limit);
+      
+      const grouped = (data || []).reduce((acc, item) => {
+        const key = item.bidang_usaha?.nama_BUsaha || "Lainnya";
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(item);
+        return acc;
+      }, {});
+      setGroupedPrograms(grouped);
+      setLoading(false);
+    };
     getData();
-  }, [getData]);
-
-  // =========================
-  // Group by bidang usaha
-  // =========================
-  useEffect(() => {
-    const grouped = programs.reduce((acc, item) => {
-      const key = item.bidang_usaha?.nama_BUsaha || "Lainnya";
-      if (!acc[key]) acc[key] = [];
-      acc[key].push(item);
-      return acc;
-    }, {});
-    setGroupedPrograms(grouped);
-  }, [programs]);
+  }, [limit]);
 
   return (
     <div>

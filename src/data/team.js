@@ -8,13 +8,13 @@ export const teamData = [
   {
     "name": "Tri Mulyo, SE",
     "position": "Direktur Operasional", // Hapus spasi di akhir posisi untuk konsistensi
-    "image": "https://i.pinimg.com/736x/9f/9e/af/9f9eaf75f76a1053ff39e86c0a992dc0.jpg",
+    "image": "/src/assets/team/direktur-operasional.jpeg",
     "description": " "
   },
   {
     "name": "Rahmi Anggraini, ST",
     "position": "Direktur Keuangan",
-    "image": "https://i.pinimg.com/736x/3c/63/1b/3c631b97815217aaa9716d368feb990a.jpg",
+    "image": "/src/assets/team/direktur-keuangan.jpeg",
     "description": " "
   },
   {
