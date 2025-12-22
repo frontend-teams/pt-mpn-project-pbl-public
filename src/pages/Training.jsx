@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import TrainingCard from "../components/TrainingCard";
-import TrainingDetail from "./TrainingDetail";
+// import TrainingDetail from "./TrainingDetail";
 import { fetchJenisUsaha } from "../api/jenisUsahaApi";
 import API_BASE_URL from "../api/apiConfig";
 import "../styling/pages/Training.css";
@@ -24,7 +24,7 @@ const Training = ({ limit = null }) => {
     const getData = async () => {
       setLoading(true);
       const data = await fetchJenisUsaha(limit);
-      
+
       const grouped = (data || []).reduce((acc, item) => {
         const key = item.bidang_usaha?.nama_BUsaha || "Lainnya";
         if (!acc[key]) acc[key] = [];

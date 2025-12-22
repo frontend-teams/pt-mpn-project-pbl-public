@@ -48,7 +48,9 @@ export default function Services() {
             </div>
           ) : services.length === 0 ? (
             <div className="text-center py-5">
-              <p className="text-muted">Tidak ada layanan yang tersedia saat ini.</p>
+              <p className="text-muted">
+                Tidak ada layanan yang tersedia saat ini.
+              </p>
             </div>
           ) : (
             <Row className="g-4 justify-content-center">
@@ -62,7 +64,11 @@ export default function Services() {
                       <img
                         src={
                           item.poto
-                            ? `${API_BASE_URL}/${item.poto}`
+                            ? item.poto.startsWith("http")
+                              ? item.poto
+                              : `${API_BASE_URL}${
+                                  item.poto.startsWith("/") ? "" : "/"
+                                }${item.poto}`
                             : "/default-service.jpg"
                         }
                         alt={item.nama_BUsaha || "Layanan Image"}

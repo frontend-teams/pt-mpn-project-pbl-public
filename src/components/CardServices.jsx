@@ -56,7 +56,11 @@ export default function CardServices() {
                     <img
                       src={
                         item.poto
-                          ? `${API_BASE_URL}/${item.poto}`
+                          ? item.poto.startsWith("http")
+                            ? item.poto
+                            : `${API_BASE_URL}${
+                                item.poto.startsWith("/") ? "" : "/"
+                              }${item.poto}`
                           : "/default-service.jpg"
                       }
                       alt={item.nama_BUsaha}

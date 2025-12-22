@@ -88,7 +88,11 @@ Terima kasih.
                   <img
                     src={
                       service.poto
-                        ? `${API_BASE_URL}/${service.poto}`
+                        ? service.poto.startsWith("http")
+                          ? service.poto
+                          : `${API_BASE_URL}${
+                              service.poto.startsWith("/") ? "" : "/"
+                            }${service.poto}`
                         : "/default-service.jpg"
                     }
                     alt={service.nama_BUsaha}
