@@ -1,8 +1,10 @@
 import React from "react";
 import TeamCard from "../components/TeamCard";
 import { teamData } from "../data/team";
-import "../styling/pages/OurTeam.css";
+import "../styling/pages/OurTeam.css"; // Pastikan menggunakan CSS khusus untuk halaman ini jika perlu
+import "../index.css"; // Mengimpor index.css untuk menggunakan variabel dan style global
 import usePageMeta from "../utils/usePageMeta";
+import { Container, Row, Col } from "react-bootstrap";
 
 // Pages Tim Kami
 function OurTeam() {
@@ -12,48 +14,64 @@ function OurTeam() {
       "Berkenalan dengan tim PT MPN yang profesional dan berpengalaman di bidang pelatihan dan pengembangan SDM.",
     ogType: "website",
   });
+
   const director = teamData.find((m) => m.position === "Direktur Utama");
   const others = teamData.filter((m) => m.position !== "Direktur Utama");
 
   return (
-    <section className="team-section section-padding bg-light">
-      <div className="container">
-        <div className="fade-in">
-          <h1 className="team-title">Tim Kami</h1>
-          <p className="team-subtitle">
-            Perkenalkan orang-orang yang mendedikasikan diri untuk membangun,
-            mendukung, dan mengembangkan perusahaan kami.
-          </p>
-        </div>
+    <div>
+      {/* Hero Section */}
+      <section className="hero-section">
+        <Container>
+          <header className="title-section text-center">
+            <h1 className="display-1 fw-bold text-gradient">Tim Kami</h1>
+            <p className="fs-5 text-muted">
+              Mengenal lebih dekat tim profesional di balik kesuksesan PT MPN
+            </p>
+          </header>
+        </Container>
+      </section>
 
-        {/* Card Direktur Utama */}
-        {director && (
-          <div className="main-director fade-in">
-            <TeamCard
-              name={director.name}
-              position={director.position}
-              image={director.image}
-              description={director.description}
-              isDirector={true}
-            />
+      {/* Team Section */}
+      <section className="section-padding bg-light">
+        <Container>
+          <div className="fade-in">
+            {/* Card Direktur Utama */}
+            {director && (
+              <div className="main-director fade-in">
+                <Row className="justify-content-center">
+                  <Col md={8} lg={10} className="mb-4">
+                    <TeamCard
+                      name={director.name}
+                      position={director.position}
+                      image={director.image}
+                      description={director.description}
+                      isDirector={true}
+                    />
+                  </Col>
+                </Row>
+              </div>
+            )}
+
+            {/* Grid Tim */}
+            <div className="team-grid fade-in">
+              <Row className="justify-content-center g-4">
+                {others.map((member, index) => (
+                  <Col md={6} lg={3} key={member.id || index}>
+                    <TeamCard
+                      name={member.name}
+                      position={member.position}
+                      image={member.image}
+                      description={member.description}
+                    />
+                  </Col>
+                ))}
+              </Row>
+            </div>
           </div>
-        )}
-
-        {/* Grid Tim */}
-        <div className="team-grid fade-in">
-          {others.map((member, index) => (
-            <TeamCard
-              key={member.id || index}
-              name={member.name}
-              position={member.position}
-              image={member.image}
-              description={member.description}
-              // isDirector defaultnya false/tidak ada
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+        </Container>
+      </section>
+    </div>
   );
 }
 

@@ -1,57 +1,92 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "../styling/pages/Services.css";
-import { useNavigate } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
 import "../index.css";
-import { layananInfo } from "../data/layanan";
+import { fetchServices } from "../api/servicesApi";
+import API_BASE_URL from "../api/apiConfig";
 
 export default function CardServices() {
-  const navigate = useNavigate();
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await fetchServices();
+        setServices(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error("Gagal load layanan:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
 
   return (
     <>
-      {/* Hero Section */}
+      {/* HERO */}
       <section className="hero-section">
         <Container>
           <div className="text-center fade-in">
-            <h1 className="display-4 fw-bold text-gradient pb-1 mb-2">
+            <h1 className="display-4 fw-bold text-gradient mb-2">
               Layanan Kami
             </h1>
-
             <p className="fs-5 text-muted">
-              Jelajahi berbagai Layanan yang kami tawarkan
+              Jelajahi berbagai layanan yang kami tawarkan
             </p>
           </div>
         </Container>
       </section>
 
-      {/* Section Layanan */}
+      {/* LIST */}
       <section className="section-padding bg-light">
         <Container>
-          <Row className="g-4 justify-content-center">
-            {(Array.isArray(layananInfo) ? layananInfo : []).map((item, index) => (
-              <Col key={index} md={6} lg={4} className="fade-in">
-                <div className="Layanan-card shadow-custom h-100 p-3 d-flex flex-column">
-                  <img
-                    src={item.image || item.poto || item.img || item.photo || ""}
-                    alt={item.name || item.nama_BUsaha || "Layanan"}
-                    className="img-fluid rounded mb-3"
-                  />
-                  <h3 className="h5 fw-bold">{item.name || item.nama_BUsaha}</h3>
-                  <p className="text-muted grow">{item.description || item.deskripsi}</p>
+          {loading ? (
+            <div className="text-center py-5">
+              <div className="spinner-border text-primary" />
+            </div>
+          ) : (
+            <Row className="g-4 justify-content-center">
+              {services.map((item) => (
+                <Col key={item.id_BUsaha} md={6} lg={4} className="fade-in">
+                  <div className="Layanan-card shadow-custom h-100 p-3 d-flex flex-column">
+                    <img
+                      src={
+                        item.poto
+                          ? item.poto.startsWith("http")
+                            ? item.poto
+                            : `${API_BASE_URL}${
+                                item.poto.startsWith("/") ? "" : "/"
+                              }${item.poto}`
+                          : "/default-service.jpg"
+                      }
+                      alt={item.nama_BUsaha}
+                      className="img-fluid rounded mb-3"
+                    />
 
-                  <button
-                    className="btn btn-link p-0 text-start"
-                    onClick={() =>
-                      navigate(`/services/${item.id}`, { state: { openCategory: item.id } })
-                    }
-                  >
-                    Lihat selengkapnya...
-                  </button>
-                </div>
-              </Col>
-            ))}
-          </Row>
+                    <h3 className="h5 fw-bold">{item.nama_BUsaha}</h3>
+
+                    <p className="text-muted grow">
+                      {item.deskripsi?.length > 100
+                        ? item.deskripsi.slice(0, 100) + "..."
+                        : item.deskripsi}
+                    </p>
+
+                    <Button
+                      as={Link}
+                      to={`/services/${item.id_BUsaha}`}
+                      className="btn-primary-custom mt-auto"
+                    >
+                      Lihat Detail
+                    </Button>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          )}
         </Container>
       </section>
     </>

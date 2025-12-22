@@ -1,37 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-
-import image1 from "../assets/gallery/image1.jpeg";
-import image2 from "../assets/gallery/image2.jpeg";
-import image3 from "../assets/gallery/image3.jpeg";
-import image4 from "../assets/gallery/image4.jpeg";
-import image5 from "../assets/gallery/image5.jpeg";
-
-const photos = [
-  image1,
-  image2,
-  image3,
-  image4,
-  image5,
-  image1,
-  image2,
-  image3,
-  image4,
-  image5,
-];
+import { fetchGallery } from "../api/galleryApi"; // panggil fungsi fetch API
+import API_BASE_URL from "../api/apiConfig"; // Import API_BASE_URL
+import "../index.css";  // Mengimpor index.css untuk menggunakan variabel dan style global
+import { Container } from "react-bootstrap";
 
 const Gallery = () => {
+  const [gallery, setGallery] = useState([]);
+  const [loading, setLoading] = useState(true); // State loading untuk menunggu data
+
+ useEffect(() => {
+  const getGallery = async () => {
+    const data = await fetchGallery(); // default ambil semua
+    console.log('Data dari fetchGallery:', data); // Log data yang diterima dari API
+    if (data) {
+      setGallery(data);
+      setLoading(false); // Set loading false setelah data diterima
+    }
+  };
+  getGallery();
+}, []);
+
+  if (loading) {
+    return (
+      <section className="courses-section py-5 text-center">
+        <div className="spinner-border text-primary" />
+      </section>
+    );
+  }
+
   return (
-    <section className="py-5 overflow-hidden">
-      <h1 className="display-4 fw-bold text-gradient pb-1 mb-2 text-center">Galeri Kami</h1>
+    <section className="section-padding">
+      <h1 className="display-4 fw-bold text-gradient pb-1 mb-2 text-center">
+        Galeri Kami
+      </h1>
       <p className="text-center text-muted mb-5">
         Jelajahi momen-momen berharga dari berbagai pelatihan dan kegiatan kami
       </p>
 
-      <div className="fade-edges-wrapper w-100" style={{ height: "441px" }}>
-        <Swiper
+      <div style={{ height: "441px" }}>
+        <Container>
+          <Swiper
           modules={[Autoplay]}
           spaceBetween={20}
           slidesPerView={"auto"}
@@ -45,8 +56,8 @@ const Gallery = () => {
           }}
           className="h-100 d-flex align-items-center"
         >
-          {photos.map((src, index) => (
-            <SwiperSlide key={index} style={{ width: "481px" }}>
+          {gallery.map((item) => (
+            <SwiperSlide key={item.id} style={{ width: "481px" }}>
               <div
                 style={{
                   width: "481px",
@@ -56,8 +67,8 @@ const Gallery = () => {
                 }}
               >
                 <img
-                  src={src}
-                  alt="Gallery"
+                  src={`${API_BASE_URL}/${item.image}`}
+                  alt={"Gallery image"}
                   className="w-100 h-100"
                   style={{ objectFit: "cover" }}
                 />
@@ -65,6 +76,7 @@ const Gallery = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+        </Container>
       </div>
     </section>
   );

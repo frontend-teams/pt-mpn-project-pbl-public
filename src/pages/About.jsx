@@ -6,7 +6,18 @@ import { companyInfo } from "../data/company";
 import heroImage from "../assets/gallery/image6.jpeg";
 
 function About() {
-  
+  const mapSrc = (() => {
+    const embed = companyInfo?.kontak?.mapsEmbed || "";
+    const addr = companyInfo?.kontak?.address || "";
+    const isEmbed = embed.includes("/maps/embed?");
+    if (isEmbed) return embed;
+    if (addr) {
+      return `https://www.google.com/maps?q=${encodeURIComponent(
+        addr
+      )}&output=embed`;
+    }
+    return "";
+  })();
   return (
     <div>
       {/* Hero Section */}
@@ -94,7 +105,7 @@ function About() {
             </p>
           </div>
 
-          <Row className="g-4 justify-content-start">
+          <Row className="g-4 justify-content-center">
             {companyInfo.keunggulan.map((item, index) => {
               return (
                 <Col md={6} lg={3} key={index} className="fade-in">
@@ -154,7 +165,7 @@ function About() {
             <Col lg={5} className="fade-in">
               <div className="ratio ratio-16x9 shadow-custom">
                 <iframe
-                  src={companyInfo.kontak.mapsEmbed}
+                  src={mapSrc}
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"

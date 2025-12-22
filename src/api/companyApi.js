@@ -2,7 +2,7 @@ import API_BASE_URL from './apiConfig'; // Mengimpor URL dasar API
 
 export const fetchCompanyProfile = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/company-profile`); // Menggabungkan base URL dengan endpoint
+    const response = await fetch(`${API_BASE_URL}/api/company-profile`); // Menggabungkan base URL dengan endpoint
     if (!response.ok) {
       throw new Error('Gagal mengambil data profile perusahaan');
     }

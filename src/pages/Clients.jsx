@@ -1,24 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
+import API_BASE_URL from "../api/apiConfig"; // Import API_BASE_URL
 
-import clientA from "../assets/clients/kojic.png";
-import clientB from "../assets/clients/kolam_ikan.png";
-import clientC from "../assets/clients/tensani.png";
-
-const logos = [
-  clientA,
-  clientB,
-  clientC,
-  clientA,
-  clientB,
-  clientC,
-  clientA,
-  clientB,
-];
+import { fetchPartners } from "../api/partnersApi"; // panggil fungsi fetch API
 
 const Clients = () => {
+  const [partners, setPartners] = useState([]);
+  const [loading, setLoading] = useState(true); // State loading untuk menunggu data
+
+  useEffect(() => {
+    const getPartners = async () => {
+      const data = await fetchPartners(); // default ambil semua
+      if (data?.data) {
+        setPartners(data.data);
+        setLoading(false); // Set loading false setelah data diterima
+      }
+    };
+    getPartners();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="courses-section py-5 text-center">
+        <div className="spinner-border text-primary" />
+      </section>
+    );
+  }
+
   return (
     <section className="py-4">
       <div className="container text-center">
@@ -32,7 +42,7 @@ const Clients = () => {
         <div className="d-flex justify-content-center">
           <div
             className="fade-edges-wrapper"
-            style={{ width: "550px", height: "80px" }}
+            style={{ width: "100%", maxWidth: "550px", height: "80px" }}
           >
             <Swiper
               modules={[Autoplay]}
@@ -47,14 +57,14 @@ const Clients = () => {
               }}
               className="h-100"
             >
-              {logos.map((logo, index) => (
+              {partners.map((partner) => (
                 <SwiperSlide
-                  key={index}
+                  key={partner.id}
                   className="d-flex align-items-center justify-content-center"
                 >
                   <img
-                    src={logo}
-                    alt={`Client ${index}`}
+                    src={`${API_BASE_URL}/uploads/${partner.logo}`} // Menggunakan API_BASE_URL untuk URL gambar
+                    alt={partner.nama_partner}
                     style={{ maxHeight: "70px", width: "auto" }}
                     loading="lazy"
                     width="140"

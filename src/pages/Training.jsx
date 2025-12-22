@@ -1,125 +1,91 @@
 import React, { useState, useEffect } from "react";
-import trainings from "../data/training";
+import { Container, Row, Col } from "react-bootstrap";
 import TrainingCard from "../components/TrainingCard";
-import TrainingDetail from "./TrainingDetail";
+// import TrainingDetail from "./TrainingDetail";
+import { fetchJenisUsaha } from "../api/jenisUsahaApi";
+import API_BASE_URL from "../api/apiConfig";
 import "../styling/pages/Training.css";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import "../index.css";
 import usePageMeta from "../utils/usePageMeta";
 
-const Training = () => {
+const Training = ({ limit = null }) => {
   usePageMeta({
-    title: "Program Pelatihan PT MPN — Nonformal & Keterampilan Kerja",
-    description:
-      "Pilih berbagai program pelatihan nonformal dan keterampilan kerja: soft skills, administrasi, digital, operator alat berat, welding, dan lainnya.",
-    ogType: "website",
+    title: "Program Pelatihan PT MPN",
+    description: "Berbagai program pelatihan dan keterampilan kerja",
   });
-  const [selectedTraining, setSelectedTraining] = useState(null);
-  const [show, setShow] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
-  const openModal = (item) => {
-    setSelectedTraining(item);
-    setShow(true);
-  };
+  const [groupedPrograms, setGroupedPrograms] = useState({});
+  const [loading, setLoading] = useState(true);
 
-  const closeModal = () => {
-    setShow(false);
-    setSelectedTraining(null);
-  };
-
+  // =========================
+  // Fetch data and group by bidang usaha
+  // =========================
   useEffect(() => {
-    // Memastikan scroll restoration diatur ke manual
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
-    }
+    const getData = async () => {
+      setLoading(true);
+      const data = await fetchJenisUsaha(limit);
 
-    // Memastikan halaman dimulai dari atas
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-
-    // Trigger untuk animasi masuk saat komponen dimount
-    const t = setTimeout(() => setMounted(true), 100);
-    return () => {
-      clearTimeout(t);
-      if ("scrollRestoration" in window.history) {
-        // Mengembalikan perilaku default saat komponen di-unmount
-        window.history.scrollRestoration = "auto";
-      }
+      const grouped = (data || []).reduce((acc, item) => {
+        const key = item.bidang_usaha?.nama_BUsaha || "Lainnya";
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(item);
+        return acc;
+      }, {});
+      setGroupedPrograms(grouped);
+      setLoading(false);
     };
-  }, []);
+    getData();
+  }, [limit]);
 
   return (
-    <div
-      className={`${
-        mounted
-          ? "training-slide-up-enter training-fade-enter"
-          : "training-slide-up-init training-fade-init"
-      }`}
-    >
+    <div>
+      {/* ================= HERO ================= */}
       <section className="hero-section">
         <Container>
-          <header className="title-section py-4 mb-3 fade-in">
-            <h1 className="display-4 fw-bold text-gradient pb-1 mb-2 text-center">
-              Program Pelatihan
+          <div className="text-center fade-in">
+            <h1 className="display-4 fw-bold mb-4">
+              Program <span className="text-gradient">Pelatihan</span>
             </h1>
-            <p className="fs-5 text-muted text-center">
-              Tingkatkan skill kamu melalui berbagai pelatihan terbaik kami
+            <p className="fs-5 text-muted">
+              Tingkatkan keterampilan melalui program pelatihan terbaik kami
             </p>
-          </header>
+          </div>
         </Container>
       </section>
 
+      {/* ================= CONTENT ================= */}
       <section className="section-padding bg-light">
-        <div className="mb-4">
-          <h2 className="section-title">Pelatihan dan Pendidikan Non Formal</h2>
-        </div>
         <Container>
-          <Row className="g-4">
-            <Col lg={12} className="fade-in">
-              <div className="row g-4 training-row">
-                {trainings
-                  .filter((t) => t.category === "non-formal")
-                  .map((item, idx) => (
-                    <TrainingCard
-                      key={item.id}
-                      item={item}
-                      onOpen={openModal}
-                      index={idx}
-                    />
+          {loading ? (
+            <div className="text-center py-5">
+              <div className="spinner-border text-primary" />
+            </div>
+          ) : (
+            Object.keys(groupedPrograms).map((field) => (
+              <div key={field} className="mb-5">
+                {/* Section title seperti Services */}
+                <h2 className="section-title mb-4">{field}</h2>
+
+                <Row className="g-4">
+                  {groupedPrograms[field].map((item) => (
+                    <Col key={item.id} md={6} lg={4} className="fade-in">
+                      <TrainingCard
+                        item={{
+                          id: item.id,
+                          title: item.nama_jenis,
+                          desc: item.deskripsi,
+                          image: item.foto
+                            ? `${API_BASE_URL}/uploads/${item.foto}`
+                            : "/default-training.jpg",
+                        }}
+                      />
+                    </Col>
                   ))}
+                </Row>
               </div>
-            </Col>
-          </Row>
+            ))
+          )}
         </Container>
-
-        <div className="mt-5 mb-4 pt-5">
-          <h2 className="section-title">Pelatihan Keterampilan Kerja</h2>
-        </div>
-
-        <Container>
-          <Row className="g-4">
-            <Col lg={12} className="fade-in">
-              <div className="row g-4 training-row">
-                {trainings
-                  .filter((t) => t.category === "keterampilan-kerja")
-                  .map((item, idx) => (
-                    <TrainingCard
-                      key={item.id}
-                      item={item}
-                      onOpen={openModal}
-                      index={idx}
-                    />
-                  ))}
-              </div>
-            </Col>
-          </Row>
-        </Container>
-
-        <TrainingDetail
-          show={show}
-          onClose={closeModal}
-          data={selectedTraining}
-        />
       </section>
     </div>
   );

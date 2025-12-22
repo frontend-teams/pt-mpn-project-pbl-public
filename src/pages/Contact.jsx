@@ -101,19 +101,31 @@ function Contact() {
                     </li>
                     <li className="d-flex align-items-center justify-content-center mb-3">
                       <i className="bi bi-instagram me-2 mt-1 fs-5 text-gradient"></i>
-                      <a href={companyInfo.sosial_media.instagram}>
+                      <a
+                        href={companyInfo.sosial_media.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         ptmpn.official
                       </a>
                     </li>
                     <li className="d-flex align-items-center justify-content-center mb-3">
                       <i className="bi bi-youtube me-2 mt-1 fs-5 text-gradient"></i>
-                      <a href={companyInfo.sosial_media.youtube}>
+                      <a
+                        href={companyInfo.sosial_media.youtube}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         Mitra Pelatihan Nasional
                       </a>
                     </li>
                     <li className="d-flex align-items-center justify-content-center mb-3">
                       <i className="bi bi-facebook me-2 mt-1 fs-5 text-gradient"></i>
-                      <a href={companyInfo.sosial_media.facebook}>
+                      <a
+                        href={companyInfo.sosial_media.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         PT Multiartha Pundimas Nawasena
                       </a>
                     </li>
