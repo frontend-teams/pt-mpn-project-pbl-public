@@ -43,18 +43,18 @@ const defaultCompanyInfo = {
   ],
 
   kontak: {
-    phone: "0821-1472-6830",
+    phone: "wa.me/6282114726830",
     email: "ptmultiarthapundimasnawasena@gmail.com",
     address: "Ruko Sentra Eropa Blok B16, Ciangsana, Gunung Putri, Bogor 16968",
     mapsEmbed:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.2!2d106.9!3d-6.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjQnMDAuMCJTIDEwNsKwNTQnMDAuMCJF!5e0!3m2!1sen!2sid!4v1234567890",
+      "https://maps.app.goo.gl/moAyGBTCi9TcRVs46",
   },
 
   sosial_media: {
+    linkedin: "#",
     facebook:
       "https://www.facebook.com/profile.php?id=61581378853667&sk=about&locale=id_ID",
     instagram: "https://www.instagram.com/ptmpn.official",
-    linkedin: "#",
     youtube: "https://www.youtube.com/@ptmpn_official",
     tiktok: "https://www.tiktok.com/@ptmpn_official",
   },
