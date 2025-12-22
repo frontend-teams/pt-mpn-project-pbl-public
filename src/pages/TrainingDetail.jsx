@@ -16,9 +16,10 @@ const TrainingDetail = () => {
       try {
         const res = await fetch(`${API_BASE_URL}/api/jenis-usaha/${id}`);
         const json = await res.json();
+        console.log("📝 Training detail:", json);
         setTraining(json.data);
       } catch (err) {
-        console.error(err);
+        console.error("❌ Error fetching training detail:", err);
       } finally {
         setLoading(false);
       }
@@ -65,7 +66,6 @@ const TrainingDetail = () => {
 
   return (
     <div>
-
       {/* ================= HERO ================= */}
       <section className="hero-section">
         <Container>

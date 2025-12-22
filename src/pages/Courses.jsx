@@ -14,9 +14,11 @@ const Courses = () => {
       try {
         setLoading(true);
         const data = await fetchJenisUsaha(6); // Ambil 6 data pelatihan
+        console.log("🎓 Courses data received:", data);
+        console.log("📊 Total courses:", data?.length || 0);
         setCourses(data || []);
       } catch (error) {
-        console.error("Gagal fetch courses:", error);
+        console.error("❌ Gagal fetch courses:", error);
       } finally {
         setLoading(false);
       }
@@ -43,46 +45,68 @@ const Courses = () => {
           meningkatkan keterampilan dan pengetahuan Anda dalam berbagai bidang.
         </p>
 
-        <div className="row g-4">
-          {courses.map((course) => (
-            <div className="col-md-4" key={course.id}>
-              {/* Membungkus card dengan Link agar bisa diklik */}
-              <Link
-                to={`/training/${course.id}`} // Arahkan ke halaman detail pelatihan
-                className="text-decoration-none" // Menghilangkan garis bawah pada link
-              >
-                <div className="course-card shadow-sm">
-                  <img
-                    src={
-                      course.foto
-                        ? `${API_BASE_URL}/uploads/${course.foto}`
-                        : "/default-training.jpg"
-                    }
-                    className="img-fluid course-img"
-                    alt={course.nama_jenis}
-                    loading="lazy"
-                    width="600"
-                    height="160"
-                  />
+        {courses.length === 0 ? (
+          <div
+            className="alert alert-info mx-auto"
+            style={{ maxWidth: "600px" }}
+          >
+            <h5>📚 Belum Ada Data Pelatihan</h5>
+            <p className="mb-0">
+              Data pelatihan belum tersedia. Silakan tambahkan melalui admin
+              panel atau hubungi administrator.
+            </p>
+          </div>
+        ) : (
+          <div className="row g-4">
+            {courses.map((course) => (
+              <div className="col-md-4" key={course.id}>
+                {/* Membungkus card dengan Link agar bisa diklik */}
+                <Link
+                  to={`/training/${course.id}`} // Arahkan ke halaman detail pelatihan
+                  className="text-decoration-none" // Menghilangkan garis bawah pada link
+                >
+                  <div className="course-card shadow-sm">
+                    <img
+                      src={
+                        course.foto
+                          ? course.foto.startsWith("http")
+                            ? course.foto
+                            : `${API_BASE_URL}/uploads/${course.foto}`
+                          : "/default-training.jpg"
+                      }
+                      className="img-fluid course-img"
+                      alt={course.nama_jenis}
+                      loading="lazy"
+                      width="600"
+                      height="160"
+                      onError={(e) => {
+                        console.error("❌ Failed to load image:", course.foto);
+                        console.error("Full URL attempted:", e.target.src);
+                        e.target.src = "/default-training.jpg";
+                      }}
+                    />
 
-                  <div className="course-content p-3 text-black text-start">
-                    <h5 className="fw-semibold">{course.nama_jenis}</h5>
-                    <p className="mt-2 small text-dark opacity-75">
-                      {course.deskripsi}
-                    </p>
+                    <div className="course-content p-3 text-black text-start">
+                      <h5 className="fw-semibold">{course.nama_jenis}</h5>
+                      <p className="mt-2 small text-dark opacity-75">
+                        {course.deskripsi}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
 
-        {/* Tombol "Lihat Lebih Banyak" */}
-        <div className="text-center mt-5">
-          <Button as={Link} to="/training" variant="outline-primary">
-            Lihat Lebih Banyak Pelatihan
-          </Button>
-        </div>
+        {/* Tombol "Lihat Lebih Banyak" - hanya tampil jika ada data */}
+        {courses.length > 0 && (
+          <div className="text-center mt-5">
+            <Button as={Link} to="/training" variant="outline-primary">
+              Lihat Lebih Banyak Pelatihan
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
